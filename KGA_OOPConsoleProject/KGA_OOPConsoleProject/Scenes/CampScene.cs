@@ -4,7 +4,11 @@ namespace MineSlave.Scenes
 {
     public class CampScene : Scene
     {
+        public enum State { CampStory, Result1, Result2, Result3, Back = 9 }
+        private State curState;
+
         private string input;
+
 
         public CampScene(Game game) : base(game)
         {
@@ -15,13 +19,6 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("캠프에 들어왔습니다");
             Thread.Sleep(1000);
-            Console.WriteLine("몇 호에 들어가시겠습니까");
-            Console.WriteLine("1. 101호");
-            Console.WriteLine("2. 102호");
-            Console.WriteLine("3. 103호");
-            Console.WriteLine();
-            Console.WriteLine("9.돌아간다");
-            Console.Write("선택 : ");
         }
 
         public override void Exit()
@@ -36,16 +33,18 @@ namespace MineSlave.Scenes
         public override void Input()
         {
             input = Console.ReadLine();
-            
         }
 
         public override void Render() //콘솔 출력
         {
+            Console.WriteLine("몇 호에 들어가시겠습니까");
+            Console.WriteLine("1. 101호");
+            Console.WriteLine("2. 102호");
+            Console.WriteLine("3. 103호");
+            Console.WriteLine();
+            Console.WriteLine("9.돌아간다");
+            Console.Write("선택 : ");
 
-        }
-
-        public override void Update()
-        {
             switch (input)
             {
                 case "1":
@@ -59,7 +58,7 @@ namespace MineSlave.Scenes
                         Console.WriteLine("피로 회복이 덜 합니다.");
                         Thread.Sleep(1000);
 
-                        Player.curHP += 80;
+                        curState = State.Result1;
                         break;
                     }
                 case "2":
@@ -71,10 +70,9 @@ namespace MineSlave.Scenes
                         Console.WriteLine("충분한 휴식을 취합니다.");
                         Thread.Sleep(1000);
 
-                        Player.curHP = Player.maxHP;
+                        curState = State.Result2;
                         break;
                     }
-
                 case "3":
                     {
                         Console.WriteLine("103호로 들어갑니다.");
@@ -86,10 +84,44 @@ namespace MineSlave.Scenes
                         Console.WriteLine("피로 회복이 덜 합니다.");
                         Thread.Sleep(1000);
 
-                        Player.curHP += 70;
+                        curState = State.Result3;
+                        break;
+                    }
+                case "9":
+                    {
+                        curState = State.Back;
                         break;
                     }
             }
+        }
+
+        public override void Update()
+        {
+            if (curState == State.Result1)
+            {
+                Player.curHP += 80;
+                game.ChangeScene(SceneType.Town);
+            }
+            else if (curState == State.Result2)
+            {
+                Player.curHP = Player.maxHP;
+                game.ChangeScene(SceneType.Town);
+            }
+            else if (curState == State.Result3)
+            {
+                Player.curHP += 70;
+                game.ChangeScene(SceneType.Town);
+            }
+
+            else if (curState == State.Back)
+            {
+                game.ChangeScene(SceneType.Town);
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
 }
