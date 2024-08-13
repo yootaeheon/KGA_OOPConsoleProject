@@ -5,8 +5,6 @@ namespace MineSlave.Inventorys
 {
     internal class Inventory
     {
-        public const int MaxItem = 10;
-
         private List<Item> items;
         public int itemCount => items.Count;
 
@@ -17,12 +15,6 @@ namespace MineSlave.Inventorys
 
         public bool AddItem(Item item)
         {
-            if (items.Count == MaxItem)
-            {
-                Console.WriteLine("가방이 꽉 찼습니다.");
-                return false;
-            }
-
             items.Add(item);
             return true;
         }
