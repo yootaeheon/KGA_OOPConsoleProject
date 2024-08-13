@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MineSlave.Scenes
 {
-    internal class HomeScene
+    internal class CampScene
     {
     }
 }

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KGA_OOPConsoleProject", "KGA_OOPConsoleProject\KGA_OOPConsoleProject.csproj", "{6F450DCA-B48B-45D7-B834-42C4C0E4BFA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MineSlave", "KGA_OOPConsoleProject\MineSlave.csproj", "{6F450DCA-B48B-45D7-B834-42C4C0E4BFA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

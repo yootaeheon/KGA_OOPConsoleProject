@@ -63,7 +63,7 @@ namespace MineSlave.Players
             }
         }
 
-        public void ShowInfo()
+        public void ShowInfo() //static 으로 해줘야하는가?
         {
             Console.SetCursorPosition(0, 20);
             Console.WriteLine($"============ Day : {day} =================");

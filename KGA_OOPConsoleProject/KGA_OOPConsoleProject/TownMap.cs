@@ -8,7 +8,7 @@ namespace MineSlave
 {
     public class TownMap
     {
-        public class moveData
+        public struct moveData
         {
             public bool[,] map;
             public ConsoleKey inputKey;
@@ -79,7 +79,7 @@ namespace MineSlave
             Console.ResetColor();
         }
 
-        public class Point
+        public struct Point
         {
             public int x;
             public int y;
