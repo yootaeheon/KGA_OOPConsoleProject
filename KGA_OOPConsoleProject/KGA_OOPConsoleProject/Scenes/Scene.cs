@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MineSlave.Scenes
 {
-    public enum SceneType { Title, GameOver, Size, Select, Town, Mine, Battle, Camp, Inventory, Shop, Gambling }
+    public enum SceneType { Title, GameOver, Select, Town, Mine, Battle, Camp, Inventory, Shop, Gambling , Size }
     public abstract class Scene
     {
         protected Game game;

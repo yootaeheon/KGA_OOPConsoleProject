@@ -64,6 +64,7 @@ namespace MineSlave.Scenes
                     return;
 
                 nameInput = input;
+                curState = State.Confirm;
             }
             else if (curState == State.Confirm)
             {

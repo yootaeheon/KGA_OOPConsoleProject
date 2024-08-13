@@ -12,9 +12,19 @@ namespace MineSlave.Scenes
         {
         }
 
-        public override void Enter() { }
+        public override void Enter() 
+        {
+            Console.WriteLine("당신은 낯선 곳에서 원주민들에게 끌려왔습니다..");
+            Thread.Sleep(1000);
+            Console.WriteLine("이 곳에서 노예로 새로운 삶을 살게 되었습니다");
+            Thread.Sleep(1000);
+            Console.WriteLine("당신은 하루마다 세금을 내야하며 \n미납시 즉결 처분 당합니다");
+            Thread.Sleep(1000);
+            Console.WriteLine("건강(체력, 탈진)관리에 유념하여 이 곳에서 살아남으십시오..");
+            Thread.Sleep(1000);
+        }
 
-        public override void Exit() { }
+        public override void Exit( ) { }
 
         public override void Input() 
         { 
@@ -22,21 +32,12 @@ namespace MineSlave.Scenes
         }
         public override void Render() 
         {
-            Console.Clear();
-
-            Console.WriteLine("당신은 낯선 곳에서 원주민들에게 끌려왔습니다..");
-            Thread.Sleep(2000);
-            Console.WriteLine("이 곳에서 노예로 새로운 삶을 살게 되었습니다");
-            Thread.Sleep(2000);
-            Console.WriteLine("당신은 하루마다 세금을 내야하며 \n미납시 즉결 처분 당합니다");
-            Thread.Sleep(2000);
-            Console.WriteLine("건강(체력, 탈진)관리에 유념하여 이 곳에서 살아남으십시오..");
-            Thread.Sleep(2000);
+            
 
             Console.Clear();
             Console.WriteLine("==================================");
             Console.WriteLine("=                                =");
-            Console.WriteLine("=            채굴 노예            =");
+            Console.WriteLine("=            채굴 노예           =");
             Console.WriteLine("=                                =");
             Console.WriteLine("==================================");
             Console.WriteLine();
