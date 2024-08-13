@@ -17,18 +17,20 @@ namespace MineSlave.Scenes
 
         public override void Enter()
         {
-
             curState = State.Enter;
         }
 
         public override void Exit()
         {
+            Console.Clear();
+            Console.WriteLine("마을로 돌아갑니다...");
+            game.ChangeScene(SceneType.Town);
 
         }
 
         public override void Input()
         {
-            // TODO : 인벤토리 입력
+            Console.ReadKey();
         }
 
         public override void Render()
@@ -41,7 +43,7 @@ namespace MineSlave.Scenes
                 Console.WriteLine("참가비 100골드를 내고 게임 시작.");
                 Thread.Sleep(3000);
                 Console.WriteLine("참가비를 내주세요. (아무키 누르기)");
-                Console.ReadKey();
+                Input();
             }
             else if (curState == State.Gambling)
             {
@@ -51,7 +53,7 @@ namespace MineSlave.Scenes
                 Thread.Sleep(3000);
                 Console.WriteLine();
                 Console.WriteLine("주사위를 던져주세요. (아무키를 누르기)");
-                Console.ReadKey();
+                Input();
 
                 Console.Clear();
                 Console.WriteLine("주사위를 던집니다!");
@@ -89,11 +91,7 @@ namespace MineSlave.Scenes
                     }
                 }
             }
-
-            Console.Clear();
-            Console.WriteLine("마을로 돌아갑니다...");
-            game.ChangeScene(SceneType.Town);
-
+            Exit();
         }
 
         public override void Update()
@@ -116,10 +114,6 @@ namespace MineSlave.Scenes
                     game.ChangeScene(SceneType.Town);
                     return;
                 }
-            }
-            else if (curState == State.Gambling)
-            {
-
             }
             else if (curState == State.GetGold)
             {
