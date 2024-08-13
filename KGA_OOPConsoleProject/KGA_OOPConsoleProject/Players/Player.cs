@@ -12,46 +12,46 @@ namespace MineSlave.Players
 {
     public class Player
     {
-        public int day;
+        public static int day;
         public int Day { get{ return day; } }
 
-        public int exhaustion;
+        public static int exhaustion;
         public int Exhaustion {  get{ return exhaustion; } }
 
-        public int maxExhaustion;
+        public static int maxExhaustion;
         public int MaxExhaustion { get { return maxExhaustion; } }
 
-        protected string name;
+        protected static string name;
         public string Name { get { return name; } }
 
-        protected int curHP;
+        protected static int curHP;
         public int CurHp { get { return curHP; } }
 
-        public int maxHP;
+        public static int maxHP;
         public int MaxHP { get { return maxHP; } }
 
-        public int str;
+        public static int str;
         public int Str {  get { return str; } }
 
-        public int level;
+        public static int level;
         public int Level { get { return level; } }
 
-        public int defense;
+        public static int defense;
         public int Defense { get { return defense; } }
 
-        public int gold;
+        public  static int gold;
         public int Gold { get { return gold; } }
 
-        public int exp;
+        public static int exp;
         public int Exp { get { return exp; } }
 
-        public int maxExp;
+        public static int maxExp;
         public int MaxExp { get { return maxExp; } }
 
-        public int duty;
+        public static int duty;
         public int Duty { get { return duty; } }
 
-        public int deadLine;
+        public static int deadLine;
         public int DeadLine { get { return deadLine; } }
 
         public void Skill(Monster monster)
@@ -63,7 +63,7 @@ namespace MineSlave.Players
             }
         }
 
-        public void ShowInfo() //static 으로 해줘야하는가?
+        public static void ShowInfo() //static 으로 해줘야하는가?
         {
             Console.SetCursorPosition(0, 20);
             Console.WriteLine($"============ Day : {day} =================");
@@ -73,7 +73,7 @@ namespace MineSlave.Players
             Console.WriteLine($" 소지금 : {gold,-3} 힘 : {str} 방어력 : {defense}");
             Console.WriteLine($" 레벨 : {level,-3} 경험치 : {exp} / {maxExp}");
             Console.WriteLine("===========================================");
-            Console.WriteLine($" 세금 : {duty,-3} 납부 기한 : {DeadLine,-6} ");
+            Console.WriteLine($" 세금 : {duty,-3} 납부 기한 : {deadLine,-6} ");
             Console.WriteLine("===========================================");
         }
 

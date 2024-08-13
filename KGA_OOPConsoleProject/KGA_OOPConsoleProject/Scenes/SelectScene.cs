@@ -47,7 +47,7 @@ namespace MineSlave.Scenes
                 Console.WriteLine($"이름 : {game.Player.Name}");
                 Console.WriteLine($"직업 : 광부 - 노예 ");
                 Console.WriteLine($"체력 : {game.Player.MaxHP}");
-                Console.WriteLine($"힘 : {game.Player.str}");
+                Console.WriteLine($"힘 : {game.Player.Str}");
                 Console.WriteLine($"방어력 : {game.Player.Defense}");
                 Console.WriteLine($"소지금 : {game.Player.Gold}");
                 Console.WriteLine("===================");
