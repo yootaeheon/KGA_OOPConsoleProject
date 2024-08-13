@@ -1,11 +1,4 @@
 ﻿using MineSlave.Players;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MineSlave.Scenes
 {
@@ -40,7 +33,7 @@ namespace MineSlave.Scenes
         {
             Console.Clear();
 
-            Player.ShowInfo(); // ? 
+            Player.ShowInfo();
             Console.WriteLine();
 
             TownMap.PrintMap();
@@ -53,21 +46,27 @@ namespace MineSlave.Scenes
 
         public override void Update()
         {
-            switch (TownMap.data.playerPos)
+            if (TownMap.data.playerPos.x == TownMap.data.minePos.x &&
+                TownMap.data.playerPos.y == TownMap.data.minePos.y)
             {
-                case (x = 4 &&y = 7):
-                    game.ChangeScene(SceneType.Mine);
-                    break;
-                case TownMap.data.shopPos:
-                    game.ChangeScene(SceneType.Shop);
-                    break;
-                case TownMap.data.campPos:
-                    game.ChangeScene(SceneType.Camp);
-                    break;
-                case TownMap.data.gamblingPos:
-                    game.ChangeScene(SceneType.Gambling);
-                    break;
+                game.ChangeScene(SceneType.Mine);
             }
+            else if (TownMap.data.playerPos.x == TownMap.data.shopPos.x &&
+               TownMap.data.playerPos.y == TownMap.data.shopPos.y)
+            {
+                game.ChangeScene(SceneType.Shop);
+            }
+            else if (TownMap.data.playerPos.x == TownMap.data.campPos.x &&
+               TownMap.data.playerPos.y == TownMap.data.campPos.y)
+            {
+                game.ChangeScene(SceneType.Camp);
+            }
+            else if (TownMap.data.playerPos.x == TownMap.data.gamblingPos.x &&
+               TownMap.data.playerPos.y == TownMap.data.gamblingPos.y)
+            {
+                game.ChangeScene(SceneType.Gambling);
+            }
+         
         }
     }
 }

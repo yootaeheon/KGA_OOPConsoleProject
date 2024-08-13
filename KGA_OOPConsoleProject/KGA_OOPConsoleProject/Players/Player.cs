@@ -24,7 +24,7 @@ namespace MineSlave.Players
         protected static string name;
         public string Name { get { return name; } }
 
-        protected static int curHP;
+        public static int curHP;
         public int CurHp { get { return curHP; } }
 
         public static int maxHP;
@@ -39,7 +39,7 @@ namespace MineSlave.Players
         public static int defense;
         public int Defense { get { return defense; } }
 
-        public  static int gold;
+        public static int gold;
         public int Gold { get { return gold; } }
 
         public static int exp;

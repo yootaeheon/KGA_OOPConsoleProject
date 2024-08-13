@@ -10,22 +10,17 @@ namespace MineSlave.Inventorys
 
         public Inventory()
         {
-            items = new List<Item>(10);
+            items = new List<Item>();
         }
 
-        public bool AddItem(Item item)
+        public void AddItem(Item item)
         {
             items.Add(item);
-            return true;
         }
 
-        public bool RemoveItem(int index)
+        public void RemoveItem(int index)
         {
-            if (index < 0 || items.Count <= index)
-                return false;
-
             items.RemoveAt(index);
-            return true;
         }
 
         public void ShowAllItem()

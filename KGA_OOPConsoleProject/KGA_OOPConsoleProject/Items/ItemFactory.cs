@@ -60,6 +60,10 @@ namespace MineSlave.Items
                 food.type = ItemType.Food;
                 return food as T;
             }
+            else
+            {
+                return null;
+            }
         }
     }
 }
