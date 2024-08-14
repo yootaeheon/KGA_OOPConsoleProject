@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MineSlave.Items
 {
-    public enum ItemType { Potion, Weapon, Armor, Equipment, Water, Bag }
+    public enum ItemType { Potion, Weapon, Armor, Equipment, Water, Bag, Coal, Gold, Diamond }
     public class Item
     {
         public string name;
@@ -64,4 +64,19 @@ namespace MineSlave.Items
     {
         public int str;
     }
+
+    public class Coal : Item
+    {
+       
+    }
+
+    public class Gold : Item
+    {
+
+    }
+    public class Diamond : Item
+    {
+
+    }
+
 }

@@ -25,6 +25,12 @@ namespace MineSlave.Items
 
         Water water1 = ItemFactory.Create<Water>("물병");
         Water water2 = ItemFactory.Create<Water>("스탠리 텀블러");
+
+        Coal coal = ItemFactory.Create<Coal>("석탄");
+        Gold gold = ItemFactory.Create<Gold>("금");
+        Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
+
+
     }
 
     public class ItemFactory
@@ -151,7 +157,33 @@ namespace MineSlave.Items
                 water.type = ItemType.Water;
                 return water as T;
             }
-
+            else if (name == "석탄")
+            {
+                Coal coal = new Coal();
+                coal.name = "석탄";
+                coal.weight = 2;
+                coal.price = 10;
+                coal.type = ItemType.Coal;
+                return coal as T;
+            }
+            else if (name == "금")
+            {
+                Gold gold = new Gold();
+                gold.name = "금";
+                gold.weight = 3;
+                gold.price = 30;
+                gold.type = ItemType.Gold;
+                return gold as T;
+            }
+            else if (name == "다이아몬드")
+            {
+                Diamond diamond = new Diamond();
+                diamond.name = "다이아몬드";
+                diamond.weight = 8;
+                diamond.price = 100;
+                diamond.type = ItemType.Diamond;
+                return diamond as T;
+            }
 
             else
             {
