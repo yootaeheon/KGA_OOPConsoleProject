@@ -59,7 +59,10 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Buy)
             {
-
+                for (int i = 0; i < 9; i++)
+                {
+                    Console.WriteLine(Item.);
+                }
             }
         }
 
@@ -82,6 +85,7 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Buy)
             {
+                
 
             }
             else if (curState == State.Sell)

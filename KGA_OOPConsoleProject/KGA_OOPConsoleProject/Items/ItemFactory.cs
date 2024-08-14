@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MineSlave.Items
 {
+   public class MakeItem
+    {
+        Potion Potion1 = ItemFactory.Create<Potion>("HP 포션");
+        Potion Potion2 = ItemFactory.Create<Potion>("비타400");
+        Potion Potion3 = ItemFactory.Create<Potion>("MaxHP 포션");
+
+        Armor armor1 = ItemFactory.Create<Armor>("반코팅 목장갑");
+        Armor armor2 = ItemFactory.Create<Armor>("3M 장갑");
+        Armor armor3 = ItemFactory.Create<Armor>("안전모");
+
+        Weapon weapon1 = ItemFactory.Create<Weapon>("나이프");
+        Weapon weapon2 = ItemFactory.Create<Weapon>("너클");
+
+        Equipment equipment1 = ItemFactory.Create<Equipment>("묵직한 곡괭이");
+        Equipment equipment2 = ItemFactory.Create<Equipment>("녹슨 곡괭이");
+
+        Water water1 = ItemFactory.Create<Water>("물병");
+        Water water2 = ItemFactory.Create<Water>("스탠리 텀블러");
+    }
+
     public class ItemFactory
     {
-        public class ItemList
+        public static T Create<T>(string name) where T : Item
         {
-            List<Item> items = new List<Item>();
-
-            Potion Potion1 = ItemFactory.Create<Potion>(ItemType.Potion);
-        }
-
-        public static T Create<T>(ItemType type) where T : Item
-        {
-            if (type == ItemType.Potion)
+            if (name == "HP 포션")
             {
                 Potion potion = new Potion();
                 potion.name = "HP 포션";
@@ -27,7 +41,7 @@ namespace MineSlave.Items
                 potion.type = ItemType.Potion;
                 return potion as T;
             }
-            if (type == ItemType.Potion)
+            if (name == "비타400")
             {
                 Potion potion = new Potion();
                 potion.name = "비타400";
@@ -37,7 +51,7 @@ namespace MineSlave.Items
                 potion.type = ItemType.Potion;
                 return potion as T;
             }
-            else if (type == ItemType.Potion)
+            else if (name == "MaxHP 포션")
             {
                 Potion potion = new Potion();
                 potion.name = "MaxHP 포션";
@@ -47,7 +61,7 @@ namespace MineSlave.Items
                 potion.type = ItemType.Potion;
                 return potion as T;
             }
-            else if (type == ItemType.Armor)
+            else if (name == "반코팅 목장갑")
             {
                 Armor armor = new Armor();
                 armor.name = "반코팅 목장갑";
@@ -57,7 +71,7 @@ namespace MineSlave.Items
                 armor.type = ItemType.Armor;
                 return armor as T;
             }
-            else if (type == ItemType.Armor)
+            else if (name == "3M 장갑")
             {
                 Armor armor = new Armor();
                 armor.name = "3M 장갑";
@@ -67,7 +81,7 @@ namespace MineSlave.Items
                 armor.type = ItemType.Armor;
                 return armor as T;
             }
-            else if (type == ItemType.Armor)
+            else if (name == "안전모")
             {
                 Armor armor = new Armor();
                 armor.name = "안전모";
@@ -77,7 +91,7 @@ namespace MineSlave.Items
                 armor.type = ItemType.Armor;
                 return armor as T;
             }
-            else if (type == ItemType.Weapon)
+            else if (name == "나이프")
             {
                 Weapon weapon = new Weapon();
                 weapon.name = "나이프";
@@ -87,7 +101,7 @@ namespace MineSlave.Items
                 weapon.type = ItemType.Weapon;
                 return weapon as T;
             }
-            else if (type == ItemType.Weapon)
+            else if (name == "너클")
             {
                 Weapon weapon = new Weapon();
                 weapon.name = "너클";
@@ -97,7 +111,7 @@ namespace MineSlave.Items
                 weapon.type = ItemType.Weapon;
                 return weapon as T;
             }
-            else if (type == ItemType.Equipment)
+            else if (name == "묵직한 곡괭이")
             {
                 Equipment equipment = new Equipment();
                 equipment.name = "묵직한 곡괭이";
@@ -107,7 +121,7 @@ namespace MineSlave.Items
                 equipment.type = ItemType.Equipment;
                 return equipment as T;
             }
-            else if (type == ItemType.Equipment)
+            else if (name == "녹슨 곡괭이")
             {
                 Equipment equipment = new Equipment();
                 equipment.name = "녹슨 곡괭이";
@@ -117,7 +131,7 @@ namespace MineSlave.Items
                 equipment.type = ItemType.Equipment;
                 return equipment as T;
             }
-            else if (type == ItemType.Water)
+            else if (name == "물병")
             {
                 Water water = new Water();
                 water.name = "물병";
@@ -127,7 +141,7 @@ namespace MineSlave.Items
                 water.type = ItemType.Water;
                 return water as T;
             }
-            else if (type == ItemType.Water)
+            else if (name == "스탠리 텀블러")
             {
                 Water water = new Water();
                 water.name = "스탠리 텀블러";
