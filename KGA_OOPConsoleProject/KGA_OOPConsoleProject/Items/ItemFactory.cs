@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace MineSlave.Items
 {
-   public class MakeItem
+   public class items
     {
         Potion Potion1 = ItemFactory.Create<Potion>("HP 포션");
         Potion Potion2 = ItemFactory.Create<Potion>("비타400");

@@ -3,7 +3,7 @@
 
 namespace MineSlave.Inventorys
 {
-    internal class Inventory
+    public class Inventory
     {
         private List<Item> inven;
         public int itemCount => inven.Count;
