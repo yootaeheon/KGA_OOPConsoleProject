@@ -52,6 +52,8 @@ namespace MineSlave.Scenes
             else if (curState == State.Mine)
             {
                 Console.Clear();
+                Players.Player.ShowInfo2();
+                Console.WriteLine();
                 Console.WriteLine("깡!...");
                 Thread.Sleep(2000);
                 Console.WriteLine("깡!!...");
@@ -63,11 +65,13 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.GetItem)
             {
+
+            }
+            //뒤로가기 랑 쇼인포 개발
+            else if (curState == State.Back)
+            {
                
             }
-           
-
-
             Exit();
         }
 
@@ -90,30 +94,40 @@ namespace MineSlave.Scenes
                 {
                     Random random = new Random();
                     int percent = random.Next(1, 100);
-                    if (percent > 95)
-                    {
-                        game.ChangeScene(SceneType.Battle);
-                    }
-                    else if (percent > 80)
-                    {
-                        Console.WriteLine("다이아몬드 채굴!");
-                        Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
-                        inventory.AddItem(diamond);
 
-                    }
-                    else if (percent > 50)
+                    do
                     {
-                        Console.WriteLine("금 채굴!");
-                        Gold gold = ItemFactory.Create<Gold>("금");
-                        inventory.AddItem(gold);
-                    }
-                    else
-                    {
-                        Console.WriteLine("석탄 채굴!");
-                        Coal coal = ItemFactory.Create<Coal>("석탄");
-                        inventory.AddItem(coal);
-                    }
+                        if (percent > 95)
+                        {
+                            game.ChangeScene(SceneType.Battle);
+                        }
+                        else if (percent > 80)
+                        {
+                            Console.WriteLine("다이아몬드 채굴!");
+                            Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
+                            inventory.AddItem(diamond);
+
+
+                        }
+                        else if (percent > 50)
+                        {
+                            Console.WriteLine("금 채굴!");
+                            Gold gold = ItemFactory.Create<Gold>("금");
+                            inventory.AddItem(gold);
+                        }
+                        else
+                        {
+                            Console.WriteLine("석탄 채굴!");
+                            Coal coal = ItemFactory.Create<Coal>("석탄");
+                            inventory.AddItem(coal);
+                        }
+                    } while (percent > 95 || input == 9);
+                    
                 }
+            }
+            else if (curState == State.Back)
+            {
+                Exit();
             }
         }
     }
