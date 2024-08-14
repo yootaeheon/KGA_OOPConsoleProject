@@ -32,7 +32,7 @@ namespace MineSlave
                     }
                     else
                     {
-                        Console.Write("■■■");
+                        Console.Write("■");
                     }
                 }
                 Console.WriteLine();
@@ -51,7 +51,7 @@ namespace MineSlave
         {
             Console.SetCursorPosition(data.minePos.x, data.minePos.y);
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("광  산");
+            Console.Write("M");
             Console.ResetColor();
         }
 
@@ -59,7 +59,7 @@ namespace MineSlave
         {
             Console.SetCursorPosition(data.shopPos.x, data.shopPos.y);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("상  점");
+            Console.Write("S");
             Console.ResetColor();
         }
 
@@ -67,7 +67,7 @@ namespace MineSlave
         {
             Console.SetCursorPosition(data.campPos.x, data.campPos.y);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("캠  프");
+            Console.Write("C");
             Console.ResetColor();
         }
 
@@ -75,7 +75,7 @@ namespace MineSlave
         {
             Console.SetCursorPosition(data.gamblingPos.x, data.gamblingPos.y);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("도박장");
+            Console.Write("$");
             Console.ResetColor();
         }
 

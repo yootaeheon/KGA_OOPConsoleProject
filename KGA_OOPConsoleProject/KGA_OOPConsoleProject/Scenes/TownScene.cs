@@ -33,15 +33,18 @@ namespace MineSlave.Scenes
         {
             Console.Clear();
 
-            Player.ShowInfo();
-            Console.WriteLine();
-
+          
             TownMap.PrintMap();
             TownMap.PrintPlayer();
             TownMap.PrintMine();
             TownMap.PrintShop();
             TownMap.PrintCamp();
             TownMap.PrintGambling();
+
+            Console.WriteLine();
+            Player.ShowInfo();
+            Console.WriteLine();
+
         }
 
         public override void Update()

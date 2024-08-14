@@ -1,5 +1,6 @@
 ﻿using MineSlave.Inventorys;
 using MineSlave.Items;
+using System.ComponentModel.Design;
 
 namespace MineSlave.Scenes
 {
@@ -67,12 +68,10 @@ namespace MineSlave.Scenes
             {
 
             }
-            //뒤로가기 랑 쇼인포 개발
             else if (curState == State.Back)
             {
                
             }
-            Exit();
         }
 
         public override void Update()
@@ -106,8 +105,6 @@ namespace MineSlave.Scenes
                             Console.WriteLine("다이아몬드 채굴!");
                             Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
                             inventory.AddItem(diamond);
-
-
                         }
                         else if (percent > 50)
                         {
@@ -121,8 +118,11 @@ namespace MineSlave.Scenes
                             Coal coal = ItemFactory.Create<Coal>("석탄");
                             inventory.AddItem(coal);
                         }
-                    } while (percent > 95);
-                    
+                    } while (percent > 95 || inputKey == ConsoleKey.D9);
+                }
+                else if (inputKey == ConsoleKey.D9)
+                {
+                    curState = State.Back;
                 }
             }
             else if (curState == State.Back)

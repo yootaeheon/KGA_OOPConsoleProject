@@ -61,7 +61,7 @@ namespace MineSlave
 
             // [Feat] 추가된 기능들
             Inventory inventory = new Inventory();
-            Item[] items = new Item[5];
+            
             MonsterBuilder mineWorkerBuilder = new MonsterBuilder();
             MonsterBuilder beastBuilder = new MonsterBuilder();
             MonsterBuilder monsterBuilder = new MonsterBuilder();
