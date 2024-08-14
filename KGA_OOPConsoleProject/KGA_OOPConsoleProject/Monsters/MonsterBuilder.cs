@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace MineSlave.Monsters
 {
-    internal class MonsterBuilder
+    public class MakeMonsterBilder
+    {
+        public MonsterBuilder mineWorkerBuilder = new MonsterBuilder();
+        public MonsterBuilder beastBuilder = new MonsterBuilder();
+        public MonsterBuilder monsterBuilder = new MonsterBuilder();
+
+    }
+
+    public class MonsterBuilder
     {
         public string name;
         public int hp;

@@ -60,11 +60,10 @@ namespace MineSlave
             curScene.Enter();
 
             // [Feat] 추가된 기능들
+             
             Inventory inventory = new Inventory();
             
-            MonsterBuilder mineWorkerBuilder = new MonsterBuilder();
-            MonsterBuilder beastBuilder = new MonsterBuilder();
-            MonsterBuilder monsterBuilder = new MonsterBuilder();
+            Item[] items = new Item[10];
 
             TownMap.data.map = new bool[,]
             {            //숙소        //상점        //도박장

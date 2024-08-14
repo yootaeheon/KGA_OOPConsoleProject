@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace MineSlave.Monsters
 {
     public enum MonsterType { MineWorker, Beast, Monster }
+
+
     public class Monster
     {
         public string name;
