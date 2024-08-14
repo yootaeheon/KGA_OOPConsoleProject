@@ -3,6 +3,7 @@ using MineSlave.Items;
 using MineSlave.Monsters;
 using MineSlave.Players;
 using MineSlave.Scenes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 
@@ -101,6 +102,26 @@ namespace MineSlave
 
         private void Update()
         {
+            if (player.Exp >= player.MaxExp)
+            {
+                player.Level += 1;
+                player.Exp = player.Exp - player.MaxExp;
+
+                player.MaxHP += 100;
+                player.CurHP = player.MaxHP;
+                player.Str += 5;
+            }
+
+            if (player.CurHP >= player.MaxHP)
+            {
+                player.CurHP = player.MaxHP;
+            }
+
+            if (player.Gold <= 0)
+            {
+                player.Gold = 0;
+            }
+
             curScene.Update();
         }
     }

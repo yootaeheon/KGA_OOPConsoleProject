@@ -7,7 +7,7 @@ namespace MineSlave.Scenes
     public class BattleScene : Scene
     {
         private Monster monster;
-        public enum State { Enter, Encounter, Attack, Defense, Kill, Back  }
+        public enum State { Enter, Encounter, Attack, Defense, Kill }
         private State curState;
         public ConsoleKey inputKey;
         public BattleScene(Game game) : base(game)
@@ -62,12 +62,12 @@ namespace MineSlave.Scenes
             else if (curState == State.Attack)
             {
                 Console.Clear() ;
-                Console.WriteLine($"{monster.apperance} {monster[0].name}의 체력 : {monster.hp}"); // 둘중 뭐가 맞느가
+                Console.WriteLine($"{monster.apperance} {monster.name}의 체력 : {monster.hp}"); // 둘중 뭐가 맞느가
                 Console.WriteLine();
             }
             else if (curState == State.Kill)
             {
-                Console.WriteLine($"{monster.apperance} {monster[0].name}를 잡았다!!");
+                Console.WriteLine($"{monster.apperance} {monster.name}를 잡았다!!");
                 Console.WriteLine("엄청난 보상을 얻었다.");
                 Console.WriteLine($"{monster.exp}");
                 Console.WriteLine($"{monster.gold}");

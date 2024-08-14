@@ -16,43 +16,43 @@ namespace MineSlave.Players
         public int Day { get{ return day; } }
 
         public static int exhaustion;
-        public int Exhaustion {  get{ return exhaustion; } }
+        public int Exhaustion {  get{ return exhaustion; } set { } }
 
         public static int maxExhaustion;
-        public int MaxExhaustion { get { return maxExhaustion; } }
+        public int MaxExhaustion { get { return maxExhaustion; } set { } }
 
         protected static string name;
         public string Name { get { return name; } }
 
         public static int curHP;
-        public int CurHp { get { return curHP; } }
+        public int CurHP { get { return curHP; } set { } }
 
         public static int maxHP;
-        public int MaxHP { get { return maxHP; } }
+        public int MaxHP { get { return maxHP; } set { } }
 
         public static int str;
-        public int Str {  get { return str; } }
+        public int Str {  get { return str; } set { } }
 
         public static int level;
-        public int Level { get { return level; } }
+        public int Level { get { return level; } set { } }
 
         public static int defense;
-        public int Defense { get { return defense; } }
+        public int Defense { get { return defense; } set { } }
 
         public static int gold;
-        public int Gold { get { return gold; } }
+        public int Gold { get { return gold; } set { } }
 
         public static int exp;
-        public int Exp { get { return exp; } }
+        public int Exp { get { return exp; } set { } }
 
         public static int maxExp;
-        public int MaxExp { get { return maxExp; } }
+        public int MaxExp { get { return maxExp; } set { } }
 
         public static int duty;
-        public int Duty { get { return duty; } }
+        public int Duty { get { return duty; } set { } }
 
         public static int deadLine;
-        public int DeadLine { get { return deadLine; } }
+        public int DeadLine { get { return deadLine; } set { } }
 
         public void Skill(Monster monster)
         {
