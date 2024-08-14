@@ -3,6 +3,7 @@ using MineSlave.Items;
 using MineSlave.Monsters;
 using MineSlave.Players;
 using MineSlave.Scenes;
+using System.ComponentModel.Design;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
@@ -48,7 +49,21 @@ namespace MineSlave
         {
            
             isRunning = true;
+
             player = new();
+            player.Day = 0;
+            player.Duty = 500;
+            player.DeadLine = 5;
+            player.Level = 1;
+            player.MaxExp = 100;
+            player.Exp = 0;
+            player.MaxHP = 100;
+            player.CurHP = player.MaxHP;
+            player.MaxExhaustion = 6;
+            player.Exhaustion = player.MaxExhaustion; 
+            player.Str = 5;
+            Player.Defense = 5;
+            player.Gold = 30;
 
             scenes = new Scene[(int)SceneType.Size];
             scenes[(int)SceneType.Title] = new TitleScene(this);
@@ -61,9 +76,7 @@ namespace MineSlave
             curScene.Enter();
 
             // [Feat] 추가된 기능들
-             
             Inventory inventory = new Inventory();
-            
             Item[] items = new Item[10];
 
             TownMap.data.map = new bool[,]
@@ -117,12 +130,34 @@ namespace MineSlave
                 player.CurHP = player.MaxHP;
             }
 
-            if (player.Gold <= 0)
+            player.Day += 1;
+            player.DeadLine -= 1;
+            player.Exhaustion -= 1;
+
+            if (player.DeadLine == 0)
             {
-                player.Gold = 0;
+                if (player.Gold >= 500)
+                {   
+                    player.Gold -= 500;
+                    player.DeadLine = 5;
+                    Console.WriteLine("세금 납부일 입니다.");
+                    Console.WriteLine("-500 G");
+                }
+                else
+                {
+                    Console.WriteLine("세금 납부일 입니다..");
+                    Console.WriteLine("세금을 내지 못하여 처형 당하였습니다..");
+                    Console.WriteLine("Game Over");
+                }
+            }
+            if (player.Exhaustion == 0)
+            {
+                Console.WriteLine("탈진하여 사망하였습니다..");
+                Console.WriteLine("Game Over");
             }
 
-            curScene.Update();
+
+
         }
     }
 }

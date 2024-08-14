@@ -13,14 +13,14 @@ namespace MineSlave.Players
     public class Player
     {
         public static int day;
-        public int Day { get{ return day; } }
+        public int Day { get{ return day; } set { } }
 
-        public static int exhaustion;
+        public static int exhaustion; // 탈수게이지
         public int Exhaustion {  get{ return exhaustion; } set { } }
 
         public static int maxExhaustion;
         public int MaxExhaustion { get { return maxExhaustion; } set { } }
-
+        
         protected static string name;
         public string Name { get { return name; } }
 
@@ -48,10 +48,10 @@ namespace MineSlave.Players
         public static int maxExp;
         public int MaxExp { get { return maxExp; } set { } }
 
-        public static int duty;
+        public static int duty; // 세금
         public int Duty { get { return duty; } set { } }
 
-        public static int deadLine;
+        public static int deadLine; // 납부 기한
         public int DeadLine { get { return deadLine; } set { } }
 
         public void Skill(Monster monster)
@@ -62,7 +62,7 @@ namespace MineSlave.Players
                 //스킬리스트에 등록
             }
         }
-
+        
         public static void ShowInfo() 
         {
             Console.SetCursorPosition(0, 20);
