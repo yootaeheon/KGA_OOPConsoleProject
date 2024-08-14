@@ -8,6 +8,13 @@ namespace MineSlave.Items
 {
     public class ItemFactory
     {
+        public class ItemList
+        {
+            List<Item> items = new List<Item>();
+
+            Potion Potion1 = ItemFactory.Create<Potion>(ItemType.Potion);
+        }
+
         public static T Create<T>(ItemType type) where T : Item
         {
             if (type == ItemType.Potion)
