@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MineSlave.Items
 {
-    public enum ItemType { Potion, Weapon, Armor, Equipment, Food, Bag }
+    public enum ItemType { Potion, Weapon, Armor, Equipment, Water, Bag }
     public class Item
     {
         public string name;
@@ -49,7 +49,7 @@ namespace MineSlave.Items
         public int defense;
     }
 
-    public class Food : Item
+    public class Water : Item
     {
         public int hp;
         public int exhaustion; // 낮을 수록 탈진 증세 하락

@@ -12,6 +12,8 @@ namespace MineSlave.Scenes
     {
         private Monster monster;
 
+       
+
         public BattleScene(Game game) : base(game)
         {
         }
@@ -50,7 +52,8 @@ namespace MineSlave.Scenes
         public override void Update()
         {
             // TODO : 전투 진행
-
+            Random random1 = new Random();
+            int randomBattle = random1.Next(1, 100); // 50이 나오면 배틀 시작 
             game.ChangeScene(SceneType.Town);
         }
     }
