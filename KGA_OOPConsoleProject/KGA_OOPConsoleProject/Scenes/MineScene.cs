@@ -58,6 +58,8 @@ namespace MineSlave.Scenes
                 Thread.Sleep(2000);
                 Console.WriteLine("깡!!!...");
                 Thread.Sleep(2000);
+                Console.WriteLine("(스페이스바를 이용하여 채굴)");
+                Thread.Sleep(1000);
             }
             else if (curState == State.GetItem)
             {
@@ -84,44 +86,35 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.GetItem)
             {
-                Random random = new Random();
-                int percent = random.Next(1,100);
+                if (inputKey == ConsoleKey.Spacebar)
+                {
+                    Random random = new Random();
+                    int percent = random.Next(1, 100);
+                    if (percent > 95)
+                    {
+                        game.ChangeScene(SceneType.Battle);
+                    }
+                    else if (percent > 80)
+                    {
+                        Console.WriteLine("다이아몬드 채굴!");
+                        Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
+                        inventory.AddItem(diamond);
 
-                if (percent > 90)
-                {
-                    Console.WriteLine("다이아몬드 채굴!");
-                    Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
-                    inventory.AddItem(diamond);
-                }
-                else if (percent > 30)
-                {
-                    Console.WriteLine("금 채굴!");
-                    Gold gold = ItemFactory.Create<Gold>("금");
-                    inventory.AddItem(gold);
-                }
-                else
-                {
-                    Console.WriteLine("석탄 채굴!");
-                    Coal coal = ItemFactory.Create<Coal>("석탄");
-                    inventory.AddItem(coal);
-                }
-            }
-            else if (curState == State.Battle)
-            {
-                Random randomBallte = new Random();
-                int percent = randomBallte.Next(1, 100);
-
-                if (percent > 80)
-                {
-                    game.ChangeScene(SceneType.Battle);
+                    }
+                    else if (percent > 50)
+                    {
+                        Console.WriteLine("금 채굴!");
+                        Gold gold = ItemFactory.Create<Gold>("금");
+                        inventory.AddItem(gold);
+                    }
+                    else
+                    {
+                        Console.WriteLine("석탄 채굴!");
+                        Coal coal = ItemFactory.Create<Coal>("석탄");
+                        inventory.AddItem(coal);
+                    }
                 }
             }
-
-
         }
-
     }
-
-
-
 }
