@@ -63,7 +63,7 @@ namespace MineSlave.Players
             }
         }
 
-        public static void ShowInfo() //static 으로 해줘야하는가?
+        public static void ShowInfo() 
         {
             Console.SetCursorPosition(0, 20);
             Console.WriteLine($"============ Day : {day} =================");
@@ -77,6 +77,19 @@ namespace MineSlave.Players
             Console.WriteLine("===========================================");
         }
 
+        public static void ShowInfo2()
+        {
+            Console.SetCursorPosition(0, 20);
+            Console.WriteLine($"============ Day : {day} =================");
+            Console.WriteLine($" 체력 : {curHP,+3} / {maxHP,-3}           ");
+            Console.WriteLine($" 탈진 : {exhaustion,+3} / {maxExhaustion,-3}");
+            Console.WriteLine($" 소지금 : {gold,-3} 힘 : {str} 방어력 : {defense}");
+            Console.WriteLine($" 레벨 : {level,-3} 경험치 : {exp} / {maxExp}");
+            Console.WriteLine("===========================================");
+            Console.WriteLine($" 세금 : {duty,-3} 납부 기한 : {deadLine,-6} ");
+            Console.WriteLine("===========================================");
+            Console.WriteLine("마을로 돌아가기 : 9");
+        }
 
 
 
