@@ -5,35 +5,35 @@ namespace MineSlave.Inventorys
 {
     internal class Inventory
     {
-        private List<Item> items;
-        public int itemCount => items.Count;
+        private List<Item> inven;
+        public int itemCount => inven.Count;
 
         public Inventory()
         {
-            items = new List<Item>();
+            inven = new List<Item>();
         }
 
         public void AddItem(Item item)
         {
-            items.Add(item);
+            inven.Add(item);
         }
 
         public void RemoveItem(int index)
         {
-            items.RemoveAt(index);
+            inven.RemoveAt(index);
         }
 
         public void ShowAllItem()
         {
             Console.WriteLine();
             Console.WriteLine("======= 가방 ========== ");
-            if (items.Count == 0)
+            if (inven.Count == 0)
             {
                 Console.WriteLine("텅 비어있다.");
             }
             else
             {
-                foreach (Item item in items)
+                foreach (Item item in inven)
                 {
                     Console.WriteLine(item.name);
                 }
