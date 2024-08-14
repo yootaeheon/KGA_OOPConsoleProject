@@ -45,7 +45,9 @@ namespace MineSlave
 
         private void Start()
         {
+           
             isRunning = true;
+            player = new();
 
             scenes = new Scene[(int)SceneType.Size];
             scenes[(int)SceneType.Title] = new TitleScene(this);
