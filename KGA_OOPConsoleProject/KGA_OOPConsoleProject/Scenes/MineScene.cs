@@ -121,7 +121,7 @@ namespace MineSlave.Scenes
                             Coal coal = ItemFactory.Create<Coal>("석탄");
                             inventory.AddItem(coal);
                         }
-                    } while (percent > 95 || input == 9);
+                    } while (percent > 95);
                     
                 }
             }

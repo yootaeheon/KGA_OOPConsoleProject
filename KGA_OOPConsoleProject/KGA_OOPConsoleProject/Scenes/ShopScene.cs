@@ -8,7 +8,7 @@ namespace MineSlave.Scenes
 
     public class ShopScene : Scene
     {
-        public enum State { Enter, ShopStory, Buy, Sell,, Back = 9 }
+        public enum State { Enter, ShopStory, Buy, Sell, Back = 9 }
 
         private State curState;
         private string input;
@@ -61,7 +61,7 @@ namespace MineSlave.Scenes
             {
                 for (int i = 0; i < 9; i++)
                 {
-                    Console.WriteLine(Item.);
+                   // Console.WriteLine(Item.);
                 }
             }
         }
