@@ -59,10 +59,23 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Buy)
             {
+                Console.WriteLine("아이템 번호를 눌러 구매하세요");
                 for (int i = 0; i < 9; i++)
                 {
-                   // Console.WriteLine(Item.);
+                   Console.WriteLine($"{item}");
                 }
+            }
+            else if (curState == State.Sell)
+            {
+                Console.WriteLine("아이템 번호를 눌러 판매하세요");
+                for (int i = 0; i < inventory.inven.Count; i++)
+                {
+                    Console.WriteLine($"{item}");
+                }
+            }
+            else if (curState == State.Back)
+            {
+
             }
         }
 
@@ -92,7 +105,10 @@ namespace MineSlave.Scenes
             {
 
             }
-            
+            else if (curState == State.Back)
+            {
+
+            }
         }
     }
 }
