@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace MineSlave.Scenes
 {
-   
     public class TitleScene : Scene
     {
         public TitleScene(Game game) : base(game)

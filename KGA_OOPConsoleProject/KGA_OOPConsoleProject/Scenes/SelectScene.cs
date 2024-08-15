@@ -14,7 +14,7 @@ namespace MineSlave.Scenes
         private State curState;
 
         private string input;
-        private string nameInput;
+        public static string nameInput;
 
         public SelectScene(Game game) : base(game)
         {

@@ -47,23 +47,52 @@ namespace MineSlave
 
         private void Start()
         {
-           
+            /*
+            if (player.Exp >= player.MaxExp)
+            {
+                player.Level += 1;
+                player.Exp = player.Exp - player.MaxExp;
+
+                player.MaxHP += 100;
+                player.CurHP = player.MaxHP;
+                player.Str += 5;
+            }
+
+            if (player.CurHP >= player.MaxHP)
+            {
+                player.CurHP = player.MaxHP;
+            }
+
+            player.Day += 1;
+            player.DeadLine -= 1;
+            player.Exhaustion -= 1;
+
+            if (player.DeadLine == 0)
+            {
+                if (player.Gold >= 500)
+                {
+                    player.Gold -= 500;
+                    player.DeadLine = 5;
+                    Console.WriteLine("세금 납부일 입니다.");
+                    Console.WriteLine("-500 G");
+                }
+                else
+                {
+                    Console.WriteLine("세금 납부일 입니다..");
+                    Console.WriteLine("세금을 내지 못하여 처형 당하였습니다..");
+                    Console.WriteLine("Game Over");
+                }
+            }
+            if (player.Exhaustion == 0)
+            {
+                Console.WriteLine("탈진하여 사망하였습니다..");
+                Console.WriteLine("Game Over");
+            }
+            */
             isRunning = true;
 
             player = new();
-            player.Day = 0;
-            player.Duty = 500;
-            player.DeadLine = 5;
-            player.Level = 1;
-            player.MaxExp = 100;
-            player.Exp = 0;
-            player.MaxHP = 100;
-            player.CurHP = player.MaxHP;
-            player.MaxExhaustion = 6;
-            player.Exhaustion = player.MaxExhaustion; 
-            player.Str = 5;
-            Player.Defense = 5;
-            player.Gold = 30;
+           
 
             scenes = new Scene[(int)SceneType.Size];
             scenes[(int)SceneType.Title] = new TitleScene(this);
@@ -117,47 +146,8 @@ namespace MineSlave
 
         private void Update()
         {
-            if (player.Exp >= player.MaxExp)
-            {
-                player.Level += 1;
-                player.Exp = player.Exp - player.MaxExp;
-
-                player.MaxHP += 100;
-                player.CurHP = player.MaxHP;
-                player.Str += 5;
-            }
-
-            if (player.CurHP >= player.MaxHP)
-            {
-                player.CurHP = player.MaxHP;
-            }
-
-            player.Day += 1;
-            player.DeadLine -= 1;
-            player.Exhaustion -= 1;
-
-            if (player.DeadLine == 0)
-            {
-                if (player.Gold >= 500)
-                {   
-                    player.Gold -= 500;
-                    player.DeadLine = 5;
-                    Console.WriteLine("세금 납부일 입니다.");
-                    Console.WriteLine("-500 G");
-                }
-                else
-                {
-                    Console.WriteLine("세금 납부일 입니다..");
-                    Console.WriteLine("세금을 내지 못하여 처형 당하였습니다..");
-                    Console.WriteLine("Game Over");
-                }
-            }
-            if (player.Exhaustion == 0)
-            {
-                Console.WriteLine("탈진하여 사망하였습니다..");
-                Console.WriteLine("Game Over");
-            }
-
+            
+            curScene.Update();
 
 
         }

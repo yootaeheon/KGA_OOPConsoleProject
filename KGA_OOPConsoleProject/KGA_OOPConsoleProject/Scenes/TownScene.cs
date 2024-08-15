@@ -68,6 +68,10 @@ namespace MineSlave.Scenes
             {
                 game.ChangeScene(SceneType.Gambling);
             }
+            if (TownMap.data.inputKey == ConsoleKey.D9)
+            {
+                game.ChangeScene(SceneType.Inventory);
+            }
          
         }
     }
