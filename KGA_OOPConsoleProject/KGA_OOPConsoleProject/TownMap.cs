@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MineSlave
+﻿namespace MineSlave
 {
     public class TownMap
     {
@@ -85,8 +79,10 @@ namespace MineSlave
             public int y;
         }
 
-        static void Move()
+        public static void Move()
         {
+            Point next = data.playerPos;
+
             switch (data.inputKey)
             {
                 case ConsoleKey.W:
@@ -110,7 +106,7 @@ namespace MineSlave
 
         static void MoveUp()
         {
-            Point next = new Point() { x = data.playerPos.x, y = data.playerPos.y - 2 };
+            Point next = new Point() { x = data.playerPos.x, y = data.playerPos.y - 1 };
             if (data.map[next.y, next.x])
             {
                 data.playerPos = next;
@@ -119,7 +115,7 @@ namespace MineSlave
 
         static void MoveDown()
         {
-            Point next = new Point() { x = data.playerPos.x, y = data.playerPos.y + 2 };
+            Point next = new Point() { x = data.playerPos.x, y = data.playerPos.y + 1 };
             if (data.map[next.y, next.x])
             {
                 data.playerPos = next;
@@ -128,7 +124,7 @@ namespace MineSlave
 
         static void MoveLeft()
         {
-            Point next = new Point() { x = data.playerPos.x - 2, y = data.playerPos.y };
+            Point next = new Point() { x = data.playerPos.x - 1, y = data.playerPos.y };
             if (data.map[next.y, next.x])
             {
                 data.playerPos = next;
@@ -137,7 +133,7 @@ namespace MineSlave
 
         static void MoveRight()
         {
-            Point next = new Point() { x = data.playerPos.x + 2, y = data.playerPos.y };
+            Point next = new Point() { x = data.playerPos.x + 1, y = data.playerPos.y };
             if (data.map[next.y, next.x])
             {
                 data.playerPos = next;
