@@ -9,20 +9,20 @@ namespace MineSlave.Players
         public static int day = 1;
         public int Day { get { return day; } set { } }
 
-        public static int exhaustion = maxExhaustion; // 탈수게이지
-        public int Exhaustion { get { return exhaustion; } set { } }
-
         public static int maxExhaustion = 6;
         public int MaxExhaustion { get { return maxExhaustion; } set { } }
+        
+        public static int exhaustion = maxExhaustion; // 탈수게이지
+        public int Exhaustion { get { return exhaustion; } set { } }
 
         public static string name;
         public string Name { get { return name; } }
 
-        public static int curHP = maxHP;
-        public int CurHP { get { return curHP; } set { } }
-
         public static int maxHP = 100;
         public int MaxHP { get { return maxHP; } set { } }
+
+        public static int curHP = maxHP;
+        public int CurHP { get { return curHP; } set { } }
 
         public static int str = 5;
         public int Str { get { return str; } set { } }
@@ -79,7 +79,7 @@ namespace MineSlave.Players
             Console.WriteLine($"============ Day : {day} =================");
             Console.WriteLine($" 체력 : {curHP,+3} / {maxHP,-3}           ");
             Console.WriteLine($" 탈진 : {exhaustion,+3} / {maxExhaustion,-3}");
-            Console.WriteLine($" 이름 : {Game.Equals(SceneType.Select, name)} 직업 : 광부-노예       ");
+            Console.WriteLine($" 이름 : {Game.Equals(SceneType.Select, name)} 직업 : 광부-노예       ");  //이름 위치 수정 필요
             Console.WriteLine($" 소지금 : {gold,-3} 힘 : {str} 방어력 : {defense}");
             Console.WriteLine($" 레벨 : {level,-3} 경험치 : {exp} / {maxExp}");
             Console.WriteLine("===========================================");
