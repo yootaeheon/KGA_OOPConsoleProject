@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace MineSlave.Scenes
 {
+   
     public class TitleScene : Scene
     {
         public TitleScene(Game game) : base(game)
         {
         }
-
+        
         public override void Enter() 
         {
             Console.WriteLine("당신은 낯선 곳에서 원주민들에게 끌려왔습니다..");
@@ -27,8 +28,8 @@ namespace MineSlave.Scenes
         public override void Exit( ) { }
 
         public override void Input() 
-        { 
-             Console.ReadKey();
+        {
+           Console.ReadKey(true);
         }
         public override void Render() 
         {
@@ -42,6 +43,7 @@ namespace MineSlave.Scenes
             Console.WriteLine("==================================");
             Console.WriteLine();
             Console.WriteLine("    계속 하려면 아무키나 누르시오   ");
+            Console.ReadKey();
         }
         public override void Update()
         {

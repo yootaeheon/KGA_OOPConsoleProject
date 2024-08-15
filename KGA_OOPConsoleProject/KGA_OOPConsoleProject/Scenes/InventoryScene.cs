@@ -44,9 +44,9 @@ namespace MineSlave.Scenes
         {
             if (curState == State.UseItem)
             {
-                if (inputKey == Array.IndexOf(Inventory.inven, Item))  //수정 필요
+  //              if (inputKey == Array.IndexOf(Inventory.inven, Item))  //수정 필요
                 {
-                    Player.Equip(); //수정 필요
+  //                  Player.Equip(); //수정 필요
                 }
             }
             else if (curState == State.CloseInventory)
