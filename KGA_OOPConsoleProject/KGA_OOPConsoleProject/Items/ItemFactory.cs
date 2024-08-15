@@ -30,6 +30,13 @@ namespace MineSlave.Items
         Gold gold = ItemFactory.Create<Gold>("금");
         Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
 
+        // 아이템 배열에 어떻게 넣을지
+       // Item[] gameItems = new Item[10];
+       // gameItems[0] = ; // 아이템 팩토리에서 생성한 아이템을 게임아이템 배열에 넣기
+
+        
+
+
 
     }
 

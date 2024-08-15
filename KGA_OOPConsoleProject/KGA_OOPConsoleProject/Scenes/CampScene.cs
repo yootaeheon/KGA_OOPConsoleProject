@@ -35,7 +35,7 @@ namespace MineSlave.Scenes
             input = Console.ReadLine();
         }
 
-        public override void Render() //콘솔 출력
+        public override void Render() 
         {
             Console.WriteLine("몇 호에 들어가시겠습니까");
             Console.WriteLine("1. 101호");

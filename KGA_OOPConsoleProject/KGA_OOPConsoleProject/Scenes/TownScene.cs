@@ -32,7 +32,6 @@ namespace MineSlave.Scenes
         public override void Render()
         {
             Console.Clear();
-
           
             TownMap.PrintMap();
             TownMap.PrintPlayer();
