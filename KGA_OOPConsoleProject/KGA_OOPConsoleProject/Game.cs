@@ -47,7 +47,7 @@ namespace MineSlave
 
         private void Start()
         {
-            /*
+            /*   이 게임 룰의 위치??
             if (player.Exp >= player.MaxExp)
             {
                 player.Level += 1;
@@ -99,7 +99,11 @@ namespace MineSlave
             scenes[(int)SceneType.Select] = new SelectScene(this);
             scenes[(int)SceneType.Town] = new TownScene(this);
             scenes[(int)SceneType.Camp] = new CampScene(this);
+            scenes[(int)SceneType.Mine] = new MineScene(this);
+            scenes[(int)SceneType.Battle] = new BattleScene(this);
             scenes[(int)SceneType.Gambling] = new GamblingScene(this);
+            scenes[(int)SceneType.Inventory] = new InventoryScene(this);
+            scenes[(int)SceneType.Shop] = new ShopScene(this);
 
             curScene = scenes[(int)SceneType.Title];
             curScene.Enter();
@@ -111,22 +115,22 @@ namespace MineSlave
 
 
             TownMap.data.map = new bool[,]
-            {            //숙소        //상점        //도박장
-                { false,  true, false,  true, false,  true, false},
-                { false,  true,  true,  true,  true,  true, false},
-                { false,  true,  true,  true,  true,  true, false},
-                { false,  true,  true,  true,  true,  true, false},
-                { false,  true,  true,  true,  true,  true,  true}, //광산
-                { false,  true,  true,  true,  true,  true, false},
-                { false, false, false, false, false, false, false},
+            {            //숙소                       //상점                             //도박장                 13
+                { false,  true, false, false, false,  true, false, false, false, false,  true, false, false, false},
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false},
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false},
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false},
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true}, //광산
+                { false,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true,  true, false},
+                { false, false, false, false, false, false, false, false, false, false, false, false, false, false},
               
             };
 
-            TownMap.data.playerPos = new TownMap.Point() { x = 6, y = 3 };
-            TownMap.data.minePos = new TownMap.Point() { x = 4, y = 7 };
-            TownMap.data.shopPos = new TownMap.Point() { x = 0, y = 4 };
-            TownMap.data.campPos = new TownMap.Point() { x = 0, y = 1 };
-            TownMap.data.gamblingPos = new TownMap.Point() { x = 0, y = 6 };
+            TownMap.data.playerPos = new TownMap.Point() { x = 7, y = 5 };
+            TownMap.data.minePos = new TownMap.Point() { x = 13, y = 4 };
+            TownMap.data.shopPos = new TownMap.Point() { x = 5, y = 0 };
+            TownMap.data.campPos = new TownMap.Point() { x = 1, y = 0 };
+            TownMap.data.gamblingPos = new TownMap.Point() { x = 10, y = 0 };
         }
 
         private void End()
@@ -146,10 +150,7 @@ namespace MineSlave
 
         private void Update()
         {
-            
             curScene.Update();
-
-
         }
     }
 }
