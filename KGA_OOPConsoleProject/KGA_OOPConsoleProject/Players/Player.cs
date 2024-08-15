@@ -64,16 +64,19 @@ namespace MineSlave.Players
         {
             Console.WriteLine($"플레이어가 {armor.name} 을/를 착용합니다.");
             curArmor = armor;
+            defense += armor.defense;
         }
         public void Equip(Weapon weapon)
         {
             Console.WriteLine($"플레이어가 {weapon.name} 을/를 착용합니다.");
             curWeapon = weapon;
+            str += weapon.str;
         }
         public void Equip(Equipment equipment)
         {
             Console.WriteLine($"플레이어가 {equipment.name} 을/를 착용합니다.");
             curEquipment = equipment;
+            str += equipment.str;
         }
         //
 
