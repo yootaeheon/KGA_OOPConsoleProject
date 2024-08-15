@@ -22,18 +22,21 @@ namespace MineSlave.Scenes
             Thread.Sleep(1);
             Console.WriteLine("건강(체력, 탈진)관리에 유념하여 이 곳에서 살아남으십시오..");
             Thread.Sleep(1);
+
+            Console.CursorVisible = false;
         }
 
-        public override void Exit( ) { }
+        public override void Exit( ) 
+        {
+            Console.CursorVisible = true;
+        }
 
         public override void Input() 
         {
-           Console.ReadKey(true);
+           Console.ReadKey();
         }
         public override void Render() 
         {
-            
-
             Console.Clear();
             Console.WriteLine("==================================");
             Console.WriteLine("=                                =");

@@ -4,8 +4,12 @@ namespace MineSlave.Scenes
 {
     public class TownScene : Scene
     {
-        //tab 누르면 인벤토리
-
+        TownMap map;
+        CampScene campScene;
+        BattleScene battleScene;
+        InventoryScene inventoryScene;
+        MineScene mineScene;
+        ShopScene shopScene;
         public TownScene(Game game) : base(game)
         {
         }
@@ -32,7 +36,6 @@ namespace MineSlave.Scenes
         public override void Render()
         {
             Console.Clear();
-          
             TownMap.PrintMap();
             TownMap.PrintPlayer();
             TownMap.PrintMine();
@@ -40,14 +43,13 @@ namespace MineSlave.Scenes
             TownMap.PrintCamp();
             TownMap.PrintGambling();
 
-            Console.WriteLine();
             Player.ShowInfo();
-            Console.WriteLine();
-
         }
 
         public override void Update()
         {
+            TownMap.Move();
+
             if (TownMap.data.playerPos.x == TownMap.data.minePos.x &&
                 TownMap.data.playerPos.y == TownMap.data.minePos.y)
             {
@@ -68,11 +70,11 @@ namespace MineSlave.Scenes
             {
                 game.ChangeScene(SceneType.Gambling);
             }
-            if (TownMap.data.inputKey == ConsoleKey.D9)
+           
+            if (TownMap.data.inputKey == ConsoleKey.Tab)
             {
                 game.ChangeScene(SceneType.Inventory);
             }
-         
         }
     }
 }

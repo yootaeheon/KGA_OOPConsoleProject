@@ -52,7 +52,7 @@ namespace MineSlave.Scenes
                 Console.WriteLine($"소지금 : {game.Player.Gold}");
                 Console.WriteLine("===================");
                 Console.WriteLine();
-                Console.Write("이대로 플레이 하시겠습니까?(y/n)");
+                Console.Write("이대로 플레이 하시겠습니까?(y/n) :  ");
             }
         }
 
