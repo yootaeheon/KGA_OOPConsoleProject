@@ -91,6 +91,8 @@ namespace MineSlave.Scenes
                         Console.WriteLine($"몬스터 남은 체력 : {monster.hp - totalDamage}");
                     }
                 }while (monster.hp <= 0);
+
+                curState = State.Kill;
             }
             else if (curState == State.Kill)
             {

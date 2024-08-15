@@ -17,6 +17,7 @@ namespace MineSlave.Scenes
 
         public override void Enter()
         {
+            Console.CursorVisible = false;
             curState = State.Enter;
         }
 
@@ -24,6 +25,7 @@ namespace MineSlave.Scenes
         {
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
+            Console.CursorVisible = true;
             game.ChangeScene(SceneType.Town);
 
         }
@@ -114,12 +116,13 @@ namespace MineSlave.Scenes
                     game.ChangeScene(SceneType.Town);
                     return;
                 }
+                curState = State.Gambling;
             }
             else if (curState == State.GetGold)
             {
                 Player.gold += 200;
             }
-            else if (curState == State.LoseGold)
+            else if (curState == State.LoseGold)   //GetGold 랑 하나로 묶기
             {
                 Player.gold -= 50;
             }
