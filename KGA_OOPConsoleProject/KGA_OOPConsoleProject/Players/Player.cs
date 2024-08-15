@@ -1,4 +1,5 @@
-﻿using MineSlave.Monsters;
+﻿using MineSlave.Items;
+using MineSlave.Monsters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +54,28 @@ namespace MineSlave.Players
 
         public static int deadLine; // 납부 기한
         public int DeadLine { get { return deadLine; } set { } }
+
+        // 아이템 장착
+        public Armor curArmor;
+        public Weapon curWeapon;
+        public Equipment curEquipment;
+        
+        public void Equip(Armor armor)
+        {
+            Console.WriteLine($"플레이어가 {armor.name} 을/를 착용합니다.");
+            curArmor = armor;
+        }
+        public void Equip(Weapon weapon)
+        {
+            Console.WriteLine($"플레이어가 {weapon.name} 을/를 착용합니다.");
+            curWeapon = weapon;
+        }
+        public void Equip(Equipment equipment)
+        {
+            Console.WriteLine($"플레이어가 {equipment.name} 을/를 착용합니다.");
+            curEquipment = equipment;
+        }
+        //
 
         public void Skill(Monster monster)
         {
