@@ -1,6 +1,7 @@
 ﻿using MineSlave.Inventorys;
 using MineSlave.Items;
 using MineSlave.Monsters;
+using MineSlave.Players;
 using System.Runtime.CompilerServices;
 
 namespace MineSlave.Scenes
@@ -14,6 +15,8 @@ namespace MineSlave.Scenes
         private string input;
 
         private Item item;
+        public items items;
+        public ItemFactory ItemFactory;
         private Inventory inventory;
         
         public ShopScene(Game game) : base(game)
@@ -33,6 +36,7 @@ namespace MineSlave.Scenes
         {
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
+            Thread.Sleep(1000);
             game.ChangeScene(SceneType.Town);
 
         }
@@ -59,10 +63,11 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Buy)
             {
+                
                 Console.WriteLine("아이템 번호를 눌러 구매하세요");
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < 12; i++)
                 {
-                   Console.WriteLine($"{item}");
+                   Console.WriteLine($"{item}"); // 수정 필요
                 }
             }
             else if (curState == State.Sell)
@@ -70,7 +75,7 @@ namespace MineSlave.Scenes
                 Console.WriteLine("아이템 번호를 눌러 판매하세요");
                 for (int i = 0; i < inventory.inven.Count; i++)
                 {
-                    Console.WriteLine($"{item}");
+                    Console.WriteLine($"{item}"); // 수정 필요
                 }
             }
             else if (curState == State.Back)
@@ -98,16 +103,26 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Buy)
             {
-                
-
+                if (Player.gold >= item.price)
+                {
+                    inventory.inven.Add(item);
+                    Players.Player.gold -= item.price;
+                    Console.WriteLine($"{item} 구매 완료");
+                }
+                else
+                {
+                    Console.WriteLine("골드가 부족합니다");
+                    return;
+                }
             }
             else if (curState == State.Sell)
             {
-
+                inventory.inven.Remove(item);
+                Players.Player.gold += item.price;
             }
             else if (curState == State.Back)
             {
-
+                Exit();
             }
         }
     }
