@@ -5,7 +5,7 @@ namespace MineSlave.Inventorys
 {
     public class Inventory
     {
-        private List<Item> inven;
+        public List<Item> inven;
         public int itemCount => inven.Count;
 
         public Inventory()
@@ -35,7 +35,7 @@ namespace MineSlave.Inventorys
             {
                 foreach (Item item in inven)
                 {
-                    Console.WriteLine(item.name);
+                    Console.WriteLine($"{Array.IndexOf(inven, item)}. {item.name} \n{item.type} \n{item.weight} \n{item.price}");
                 }
             }
             Console.WriteLine("======= 가방 ========== ");
