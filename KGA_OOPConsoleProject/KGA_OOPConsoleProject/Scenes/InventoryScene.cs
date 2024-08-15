@@ -1,46 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MineSlave.Inventorys;
+using MineSlave.Items;
+using MineSlave.Players;
 
 namespace MineSlave.Scenes
 {
     public class InventoryScene : Scene
     {
+        public enum State { UseItem, CloseInventory }
+        private State curState;
+        public ConsoleKey inputKey;
+        public Inventory Inventory;
+
         public InventoryScene(Game game) : base(game)
         {
         }
 
         public override void Enter()
         {
-            // TODO : 인벤토리 설정
-
             Console.Clear();
-            Console.WriteLine("인벤토리를 엽니다...");
-            Thread.Sleep(1000);
+            Inventory.ShowAllItem();
         }
 
         public override void Exit()
         {
-
+            Console.Clear();
+            game.ChangeScene(SceneType.Town);
         }
 
         public override void Input()
         {
-            // TODO : 인벤토리 입력
+            inputKey = Console.ReadKey(true).Key;
         }
 
         public override void Render()
         {
-            // TODO : 인벤토리 상황 출력
+            if (curState == State.UseItem)
+            {
+                
+            }
         }
 
         public override void Update()
         {
-            // TODO : 인벤토리 처리
-
-            game.ChangeScene(SceneType.Town);
+            if (curState == State.UseItem)
+            {
+                if (inputKey == Array.IndexOf(Inventory.inven, Item))
+                {
+                    Player.Equip();
+                }
+            }
+            else if (curState == State.CloseInventory)
+            {
+                if (inputKey == ConsoleKey.Tab)
+                {
+                    Exit();
+                }
+            }
         }
     }
 }
