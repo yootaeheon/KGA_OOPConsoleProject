@@ -5,14 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <BaseOutputPath>C:\Users\USER\Desktop</BaseOutputPath>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="Game.cs" />
-    <Compile Include="main.cs" />
-    <Compile Include="TownMap.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Storys\" />
