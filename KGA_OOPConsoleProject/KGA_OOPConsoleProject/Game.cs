@@ -21,6 +21,24 @@ namespace MineSlave
         public Player player;
         public Player Player { get { return player; } set { player = value; } }
 
+        public Inventory inventory = new Inventory();
+        public Item item = new Item();
+        public Monster monster = new Monster();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         public void Run()
@@ -93,9 +111,7 @@ namespace MineSlave
             curScene.Enter();
 
             // [Feat] 추가된 기능들
-            Inventory inventory = new Inventory();
-            Item item = new Item();
-            Monster monster = new Monster();
+            
 
 
             TownMap.data.map = new bool[,]

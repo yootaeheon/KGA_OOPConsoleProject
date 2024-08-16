@@ -35,7 +35,7 @@ namespace MineSlave.Scenes
             Monster[] monsters = new Monster[10];
 
             monsters[0] = mineWorkerBuilder.Build();
-            Console.WriteLine($"{monsters[0].apperance} {monsters[0].name}");
+            Console.WriteLine($"{monsters[0].apperance} {monsters[0].name} 가 나타났다");
 
             curState = State.Encounter;
         }
@@ -96,17 +96,17 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Kill)
             {
-                Player.gold += monster.gold;
-                Player.exp += monster.exp;
-                if (player.Exp >= player.MaxExp)
+                game.player.Gold += monster.gold;
+                game.player.Exp += monster.exp;
+                if (game.player.Exp >= game.player.MaxExp)
                 {
-                    player.Level += 1;
-                    player.Exp = player.Exp - player.MaxExp;
+                    game.player.Level += 1;
+                    game.player.Exp = game.player.Exp - game.player.MaxExp;
 
-                    player.MaxHP += 100;
-                    player.CurHP = player.MaxHP;
-                    
-                    player.Str += 5;
+                    game.player.MaxHP += 100;
+                    game.player.CurHP = game.player.MaxHP;
+
+                    game.player.Str += 5;
                 }
 
                 game.ChangeScene(SceneType.Town);

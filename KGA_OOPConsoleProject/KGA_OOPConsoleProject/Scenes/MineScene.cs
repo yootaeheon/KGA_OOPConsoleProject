@@ -13,7 +13,7 @@ namespace MineSlave.Scenes
         public string input;
         public Player player;
         public Item item;
-        public Inventory inventory;
+       
         public ItemFactory ItemFactory;
         public Diamond diamond;
         public Coal coal;
@@ -38,7 +38,7 @@ namespace MineSlave.Scenes
 
         public override void Exit()
         {
-            Console.Clear();
+            // Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Console.CursorVisible = true;
         }
@@ -103,9 +103,9 @@ namespace MineSlave.Scenes
                         {
                             Console.WriteLine("다이아몬드 채굴!");
                             Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
-                            inventory.AddItem(diamond);
-                            player.CurHP -= 1;
-                            if (player.CurHP <= 0)
+                            game.inventory.AddItem(diamond);
+                            game.player.CurHP -= 1;
+                            if (game.player.CurHP <= 0)
                             {
                                 game.Over();
                             }
@@ -114,9 +114,9 @@ namespace MineSlave.Scenes
                         {
                             Console.WriteLine("금 채굴!");
                             Gold gold = ItemFactory.Create<Gold>("금");
-                            inventory.AddItem(gold);
-                            player.CurHP -= 1;
-                            if (player.CurHP <= 0)
+                            game.inventory.AddItem(gold);
+                            game.player.CurHP -= 1;
+                            if (game.player.CurHP <= 0)
                             {
                                 game.Over();
                             }
@@ -125,9 +125,9 @@ namespace MineSlave.Scenes
                         {
                             Console.WriteLine("석탄 채굴!");
                             Coal coal = ItemFactory.Create<Coal>("석탄");
-                            inventory.AddItem(coal);
-                            player.CurHP -= 1;
-                            if (player.CurHP <= 0)
+                            game.inventory.AddItem(coal);
+                            game.player.CurHP -= 1;
+                            if (game.player.CurHP <= 0)
                             {
                                 game.Over();
                             }
