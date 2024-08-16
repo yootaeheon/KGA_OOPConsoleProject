@@ -7,6 +7,7 @@ namespace MineSlave.Scenes
 {
     public class InventoryScene : Scene
     {
+
         public enum State { UseItem, CloseInventory }
         private State curState;
         public ConsoleKey inputKey;

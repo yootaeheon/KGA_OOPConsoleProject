@@ -18,7 +18,7 @@ namespace MineSlave.Scenes
         public items items;
         public ItemFactory ItemFactory;
         private Inventory inventory;
-        
+        public Inventory[] itemSlot;
         public ShopScene(Game game) : base(game)
         {
             Init();
@@ -26,17 +26,15 @@ namespace MineSlave.Scenes
             player = game.player;
             inventory = game.inventory;
             inventory.ShowAllItem();
-            
 
             item = game.item;
         }
 
         public void Init()
         {
-            Inventory itemSlot = new Inventory();
 
-            itemSlot.AddItem(item);
-            item = ItemFactory.Create<Armor>("안전모");
+           ItemFactory.Create<Armor>("안전모");
+          //  itemSlot[0] = new Item(); 추후 개발 예정
         }
 
         public override void Enter()
@@ -80,7 +78,10 @@ namespace MineSlave.Scenes
             {
                 Console.WriteLine("아이템 번호를 눌러 구매하세요");
 
-                game.itemSlot.ShowAllItem();
+                for (int i = 0; i < game.itemSlot.Length; i++)
+                {
+                    Console.WriteLine($"{game.itemSlot[i]}. {game.item.name} \n{game.item.price} \n{game.item.type} ");
+                }
             }
             else if (curState == State.Sell)
             {

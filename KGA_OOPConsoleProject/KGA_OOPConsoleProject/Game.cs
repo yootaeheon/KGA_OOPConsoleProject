@@ -24,8 +24,8 @@ namespace MineSlave
         public Inventory inventory = new Inventory();
         public Item item = new Item();
         public Monster monster = new Monster();
-        public Inventory itemSlot = new Inventory();
-
+        public Inventory[] itemSlot = new Inventory[10];
+        public items items;
         public void Run()
         {
             Start();

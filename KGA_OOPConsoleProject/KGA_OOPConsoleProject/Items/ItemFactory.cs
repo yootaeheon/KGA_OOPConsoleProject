@@ -7,6 +7,7 @@ using System.Xml.Linq;
 
 namespace MineSlave.Items
 {
+    
    public class items
     {
         Potion potion1 = ItemFactory.Create<Potion>("HP 포션");
@@ -29,6 +30,8 @@ namespace MineSlave.Items
         Coal coal = ItemFactory.Create<Coal>("석탄");
         Gold gold = ItemFactory.Create<Gold>("금");
         Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
+
+        
     }
 
     public class ItemFactory

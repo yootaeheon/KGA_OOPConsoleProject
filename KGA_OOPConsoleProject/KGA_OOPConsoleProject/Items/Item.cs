@@ -23,7 +23,7 @@ namespace MineSlave.Items
             this.weight = 1;
         }
     }
-
+    
     public interface IDringkable
     {
         public void Drink(Item item);
