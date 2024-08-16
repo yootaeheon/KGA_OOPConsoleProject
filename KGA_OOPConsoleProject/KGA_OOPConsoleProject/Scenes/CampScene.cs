@@ -9,10 +9,11 @@ namespace MineSlave.Scenes
         private State curState;
         public Player player;   
         private string input;
-
+        
 
         public CampScene(Game game) : base(game)
         {
+            player = game.Player;
         }
 
         public override void Enter()
@@ -35,6 +36,10 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Thread.Sleep(1000);
+        }
+        public override void Exit2()
+        {
+
         }
 
         public override void Input()

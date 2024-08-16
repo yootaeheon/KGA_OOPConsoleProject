@@ -25,5 +25,7 @@ namespace MineSlave.Scenes
         public abstract void Update();
 
         public abstract void Exit();
+
+        public abstract void Exit2();
     }
 }

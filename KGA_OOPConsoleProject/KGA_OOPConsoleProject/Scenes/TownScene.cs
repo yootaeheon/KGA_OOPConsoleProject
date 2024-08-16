@@ -15,6 +15,7 @@ namespace MineSlave.Scenes
        
         public TownScene(Game game) : base(game)
         {
+            player = game.Player;
         }
 
         public override void Enter()
@@ -25,59 +26,47 @@ namespace MineSlave.Scenes
 
             Console.CursorVisible = false;
 
-
-
-
-
-
-
-
-
-
-         //  player.Day += 1;
-         //
-         //  player.Exhaustion -= 1;
-         //  if (player.Exhaustion == 0)
-         //  {
-         //      Console.WriteLine("탈진하여 사망하였습니다..");
-         //      Console.WriteLine("Game Over");
-         //  }
-         //
-         //  player.DeadLine -= 1;
-         //  if (player.DeadLine == 0)
-         //  {
-         //      if (player.Gold >= 500)
-         //      {
-         //          player.Gold -= 500;
-         //          Console.WriteLine("세금 납부일 입니다.");
-         //          Console.WriteLine("-500 G");
-         //          player.DeadLine = 5;
-         //      }
-         //      else
-         //      {
-         //          Console.WriteLine("세금 납부일 입니다..");
-         //          Console.WriteLine("세금을 내지 못하여 처형 당하였습니다..");
-         //          Console.WriteLine("Game Over");
-         //          game.Over();
-         //      }
-         //  }
-
-
-
-
-
-
-
-
-
-
-
+           //
+           player.Day += 1;
+         
+           player.Exhaustion -= 1;
+           if (player.Exhaustion == 0)
+           {
+               Console.WriteLine("탈진하여 사망하였습니다..");
+               Console.WriteLine("Game Over");
+           }
+         
+           player.DeadLine -= 1;
+           if (player.DeadLine == 0)
+           {
+               if (player.Gold >= 500)
+               {
+                   player.Gold -= 500;
+                   Console.WriteLine("세금 납부일 입니다.");
+                   Console.WriteLine("-500 G");
+                   player.DeadLine = 5;
+               }
+               else
+               {
+                   Console.WriteLine("세금 납부일 입니다..");
+                   Console.WriteLine("세금을 내지 못하여 처형 당하였습니다..");
+                   Console.WriteLine("Game Over");
+                   game.Over();
+               }
+           }
+           //
         }
 
         public override void Exit()
         {
             Console.CursorVisible = true;
         }
+
+        public override void Exit2()
+        {
+
+        }
+
 
         public override void Input()
         {

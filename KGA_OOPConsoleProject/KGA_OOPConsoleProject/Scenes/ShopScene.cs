@@ -13,7 +13,7 @@ namespace MineSlave.Scenes
         private State curState;
         private string input;
 
-
+        public Player player;
         private Item item;
         public items items;
         public ItemFactory ItemFactory;
@@ -23,17 +23,21 @@ namespace MineSlave.Scenes
         {
             Init();
 
-           // inventory.ShowAllItem();
+            player = game.player;
+            inventory = game.inventory;
+            inventory.ShowAllItem();
+            
+
+            item = game.item;
         }
 
         public void Init()
         {
             Inventory itemSlot = new Inventory();
 
-          //  itemSlot.AddItem();
+            itemSlot.AddItem(item);
+            item = ItemFactory.Create<Armor>("안전모");
         }
-
-
 
         public override void Enter()
         {
@@ -51,6 +55,10 @@ namespace MineSlave.Scenes
             Thread.Sleep(1000);
         }
 
+        public override void Exit2()
+        {
+
+        }
         public override void Input()
         {
             input = Console.ReadLine();
@@ -72,14 +80,14 @@ namespace MineSlave.Scenes
             {
                 Console.WriteLine("아이템 번호를 눌러 구매하세요");
 
-                inventory.ShowAllItem();
+                game.itemSlot.ShowAllItem();
             }
             else if (curState == State.Sell)
             {
                 Console.WriteLine("아이템 번호를 눌러 판매하세요");
                 for (int i = 0; i < inventory.inven.Count; i++)
                 {
-                    //Console.WriteLine($"{itemSlot}"); // 수정 필요
+                    Console.WriteLine($"{game.inventory}"); // 수정 필요
                 }
             }
         }
@@ -106,7 +114,7 @@ namespace MineSlave.Scenes
                 if (Player.gold >= item.price)
                 {
                     inventory.inven.Add(item);
-                    Players.Player.gold -= item.price;
+                    game.player.Gold -= item.price;
                     Console.WriteLine($"{item} 구매 완료");
                 }
                 else
@@ -118,7 +126,7 @@ namespace MineSlave.Scenes
             else if (curState == State.Sell)
             {
                 inventory.inven.Remove(item);
-                Players.Player.gold += item.price;
+                game.player.Gold += item.price;
             }
             else if (curState == State.Back)
             {

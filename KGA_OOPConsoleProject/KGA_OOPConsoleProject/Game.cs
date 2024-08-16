@@ -24,22 +24,7 @@ namespace MineSlave
         public Inventory inventory = new Inventory();
         public Item item = new Item();
         public Monster monster = new Monster();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        public Inventory itemSlot = new Inventory();
 
         public void Run()
         {
@@ -61,6 +46,14 @@ namespace MineSlave
             curScene.Enter();
         }
 
+        public void StartBattle(SceneType sceneType)
+        {
+            curScene.Exit2();
+            TownMap.data.playerPos = new TownMap.Point() { x = 7, y = 5 };
+            curScene = scenes[(int)sceneType];
+            curScene.Enter();
+        }
+
         public void Over()
         {
             isRunning = false;
@@ -71,30 +64,6 @@ namespace MineSlave
             isRunning = true;
 
             player = new();
-
-       //     player.DeadLine -= 1;
-       //     if (player.DeadLine == 0)
-       //     {
-       //         if (player.Gold >= 500)
-       //         {
-       //             player.Gold -= 500;
-       //             Console.WriteLine("세금 납부일 입니다.");
-       //             Console.WriteLine("-500 G");
-       //             player.DeadLine = 5;
-       //         }
-       //         else
-       //         {
-       //             Console.WriteLine("세금 납부일 입니다..");
-       //             Console.WriteLine("세금을 내지 못하여 처형 당하였습니다..");
-       //             Console.WriteLine("Game Over");
-       //             game.Over();
-       //         }
-       //     }
-       //
-
-
-
-
 
             scenes = new Scene[(int)SceneType.Size];
             scenes[(int)SceneType.Title] = new TitleScene(this);
@@ -109,10 +78,6 @@ namespace MineSlave
 
             curScene = scenes[(int)SceneType.Title];
             curScene.Enter();
-
-            // [Feat] 추가된 기능들
-            
-
 
             TownMap.data.map = new bool[,]
             {            //숙소                       //상점                             //도박장                 13

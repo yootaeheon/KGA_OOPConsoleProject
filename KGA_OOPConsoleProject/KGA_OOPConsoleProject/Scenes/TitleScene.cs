@@ -31,6 +31,11 @@ namespace MineSlave.Scenes
             Console.CursorVisible = true;
         }
 
+        public override void Exit2()
+        {
+
+        }
+
         public override void Input() 
         {
            Console.ReadKey();

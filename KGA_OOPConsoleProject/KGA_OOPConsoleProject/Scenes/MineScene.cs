@@ -38,10 +38,16 @@ namespace MineSlave.Scenes
 
         public override void Exit()
         {
-            // Console.Clear();
+            Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Console.CursorVisible = true;
         }
+
+        public override void Exit2() // Start Battle 전용 Exit
+        {
+            Console.WriteLine("몬스터 출현!!");
+        }
+        
 
         public override void Input()
         {
@@ -91,13 +97,15 @@ namespace MineSlave.Scenes
                 if (inputKey == ConsoleKey.Spacebar)
                 {
                     Random random = new Random();
-                    int percent = random.Next(1, 100);  // 랜덤함수 위치 수정 
+                    int percent = random.Next(1, 100); 
 
                     do
                     {
                         if (percent > 95)
                         {
-                            game.ChangeScene(SceneType.Battle);
+                            
+                            game.StartBattle(SceneType.Battle);
+                            break;
                         }
                         else if (percent > 80)
                         {

@@ -7,22 +7,30 @@ namespace MineSlave.Scenes
 
     public class BattleScene : Scene
     {
-        private Monster monster;
         public enum State { Enter, Encounter, Attack, Defense, Kill }
         private State curState;
         public ConsoleKey inputKey;
         public Player player;
+        private Monster monster;
+
         public BattleScene(Game game) : base(game)
         {
+            player = game.player;
+           
+            game.monster.apperance = "흉터로 뒤덮힌";
+            game.monster.name = "실세 광부";
+            game.monster.hp = 400;
+            game.monster.exp = 100;
+            game.monster.gold = 200;
+            game.monster.defense = 10;
+            game.monster.type = MonsterType.MineWorker;
+
+            monster = game.monster;
+
         }
 
         public override void Enter()
         {
-            // Random random = new Random();
-            // int randomMonsterIndex = random.Next(0, 10); 
-            // 랜덤 숫자의 인데스에 있는 몬스터 출현 연구
-
-
             MonsterBuilder mineWorkerBuilder = new MonsterBuilder();
             mineWorkerBuilder.SetApperance("흉터로 뒤덮힌")
                              .SetName("실세 광부")
@@ -35,7 +43,7 @@ namespace MineSlave.Scenes
             Monster[] monsters = new Monster[10];
 
             monsters[0] = mineWorkerBuilder.Build();
-            Console.WriteLine($"{monsters[0].apperance} {monsters[0].name} 가 나타났다");
+            Console.WriteLine($"{game.monster.apperance} {game.monster.name} 가 나타났다");
 
             curState = State.Encounter;
         }
@@ -45,6 +53,10 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Thread.Sleep(1000);
+        }
+        public override void Exit2()
+        {
+
         }
 
         public override void Input()
@@ -61,7 +73,6 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Attack)
             {
-                Console.Clear() ;
                 Console.WriteLine($"{monster.apperance} {monster.name}의 체력 : {monster.hp}"); // 둘중 뭐가 맞느가
                 Console.WriteLine();
             }
@@ -82,17 +93,19 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Attack)
             {
-                int totalDamage = monster.hp - (Player.str - monster.defense);
+                int totalDamage = monster.hp - (game.player.Str - monster.defense);
                 do
                 {
                     if (inputKey == ConsoleKey.Spacebar)
                     {
                         monster.hp -= totalDamage;
                         Console.WriteLine($"몬스터 남은 체력 : {monster.hp - totalDamage}");
+
                     }
                 }while (monster.hp <= 0);
-
                 curState = State.Kill;
+                return;
+               
             }
             else if (curState == State.Kill)
             {

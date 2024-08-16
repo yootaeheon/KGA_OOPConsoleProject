@@ -13,6 +13,7 @@ namespace MineSlave.Scenes
 
         public GamblingScene(Game game) : base(game)
         {
+            player = game.player;
         }
 
         public override void Enter()
@@ -24,13 +25,15 @@ namespace MineSlave.Scenes
         public override void Exit()
         {
             Console.Clear();
-            Console.WriteLine("도박 중독에 유의합시다.");
+            Console.WriteLine("도박 중독은 국번 없이 1336...");
             Console.WriteLine("마을로 돌아갑니다...");
+        }
+        public override void Exit2()
+        {
 
-            
         }
 
-        
+
 
         public override void Input()
         {
@@ -97,9 +100,9 @@ namespace MineSlave.Scenes
         {
             if (curState == State.Enter)
             {
-                if (Player.gold >= 100)
+                if (game.player.Gold >= 100)
                 {
-                    Player.gold -= 100;
+                    game.player.Gold -= 100;
                     Console.WriteLine("-100 G");
                     Thread.Sleep(1000);
 
@@ -132,12 +135,12 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.GetGold)
             {
-                Player.gold += 200;
+                game.player.Gold += 300;
                 curState = State.Back;
             }
             else if (curState == State.LoseGold)   
             {
-                Player.gold -= 50;
+                game.player.Gold -= 50;
                 curState = State.Back;
             }
             else if (curState == State.Back)

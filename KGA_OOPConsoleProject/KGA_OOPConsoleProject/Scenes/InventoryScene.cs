@@ -1,6 +1,7 @@
 ﻿using MineSlave.Inventorys;
 using MineSlave.Items;
 using MineSlave.Players;
+using System.ComponentModel;
 
 namespace MineSlave.Scenes
 {
@@ -10,9 +11,14 @@ namespace MineSlave.Scenes
         private State curState;
         public ConsoleKey inputKey;
         public Inventory Inventory;
-
+        public Player player;
+        public Item item;
+        private string input;
+       
         public InventoryScene(Game game) : base(game)
         {
+            player = game.player;
+            item = game.item;
         }
 
         public override void Enter()
@@ -23,13 +29,17 @@ namespace MineSlave.Scenes
 
         public override void Exit()
         {
-
             
+        }
+
+        public override void Exit2()
+        {
+
         }
 
         public override void Input()
         {
-            inputKey = Console.ReadKey(true).Key;
+            input = Console.ReadLine();
         }
 
         public override void Render()
@@ -44,14 +54,14 @@ namespace MineSlave.Scenes
         {
             if (curState == State.UseItem)
             {
-   //             if (inputKey == Array.IndexOf(Inventory.inven, ))  //수정 필요
+               if (input == game.item.name)  
                 {
-                //    Player.Equip(); //수정 필요
+//                    Player.Equip();  추후 개발 예정
                 }
             }
             else if (curState == State.CloseInventory)
             {
-                if (inputKey == ConsoleKey.Tab)
+                if (input == "9")
                 {
                     game.ChangeScene(SceneType.Town);
                 }

@@ -29,6 +29,11 @@ namespace MineSlave.Scenes
         {
         }
 
+        public override void Exit2()
+        {
+
+        }
+
         public override void Input()
         {
             input = Console.ReadLine();
