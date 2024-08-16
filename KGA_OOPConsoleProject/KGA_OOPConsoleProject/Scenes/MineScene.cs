@@ -92,12 +92,13 @@ namespace MineSlave.Scenes
             {
                 if (inputKey == ConsoleKey.Spacebar)
                 {
-                    
+                    Random random = new Random();
+                    int percent = random.Next(1, 100);  // 랜덤함수 위치 수정 
 
                     do
                     {
-                        Random random = new Random();
-                        int percent = random.Next(1, 100);
+                        
+                        
                         if (percent > 95)
                         {
                             game.ChangeScene(SceneType.Battle);
@@ -120,7 +121,7 @@ namespace MineSlave.Scenes
                             Coal coal = ItemFactory.Create<Coal>("석탄");
                             inventory.AddItem(coal);
                         }
-                    } while (percent > 95 || inputKey == ConsoleKey.D9); // 랜덤함수 위치 수정으로 밑줄 
+                    } while (percent > 95 || inputKey == ConsoleKey.D9); 
                 }
                 else if (inputKey == ConsoleKey.D9)
                 {

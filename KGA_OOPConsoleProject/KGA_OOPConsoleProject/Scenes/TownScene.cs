@@ -20,6 +20,7 @@ namespace MineSlave.Scenes
             Console.WriteLine("마을로 진입합니다...");
             Thread.Sleep(2000);
 
+            
             Console.CursorVisible = false;
         }
 

@@ -2,12 +2,12 @@
 
 namespace MineSlave.Scenes
 {
-
+   
     internal class GamblingScene : Scene
     {
-        public enum State { Enter, GamblingStory, Pay, Gambling, GetGold, LoseGold, Back = 9 }
+        public enum State { Enter, GamblingStory, Pay, Gambling, Result, GetGold, LoseGold, Back = 9 }
         private State curState;
-
+        int temp;
         private string input;
 
 
@@ -24,10 +24,9 @@ namespace MineSlave.Scenes
         public override void Exit()
         {
             Console.Clear();
+            Console.WriteLine("도박 중독에 유의합시다.");
             Console.WriteLine("마을로 돌아갑니다...");
-            Console.CursorVisible = true;
             game.ChangeScene(SceneType.Town);
-
         }
 
         public override void Input()
@@ -43,7 +42,7 @@ namespace MineSlave.Scenes
                 Console.WriteLine("도박장에 들어왔습니다.");
                 Thread.Sleep(1000);
                 Console.WriteLine("참가비 100골드를 내고 게임 시작.");
-                Thread.Sleep(3000);
+                Thread.Sleep(1000);
                 Console.WriteLine("참가비를 내주세요. (아무키 누르기)");
                 Input();
             }
@@ -65,35 +64,28 @@ namespace MineSlave.Scenes
                 Thread.Sleep(1000);
                 Console.WriteLine(".");
                 Thread.Sleep(1000);
+
+                curState = State.Result;
             }
             else if (curState == State.GetGold)
             {
-                Random random = new Random();
-                int temp = random.Next(1, 7);
-
-                if (temp == 1 || temp == 6)
-                {
                     Console.WriteLine($"{temp}이 나왔습니다.");
                     Thread.Sleep(1000);
                     Console.WriteLine("축하합니다. 200골드를 획득하였습니다");
                     Thread.Sleep(1000);
-
-                }
-                else if (curState == State.LoseGold)
+            }
+            else if (curState == State.LoseGold)
+            {
+                if (temp == 2 || temp == 3 || temp == 4 || temp == 5)
                 {
-                    if (temp == 2 || temp == 3 || temp == 4 || temp == 5)
-                    {
-                        Console.WriteLine($"{temp}이/가 나왔습니다.");
-                        Thread.Sleep(1000);
-                        Console.WriteLine("꽝! 다음 기회에 다시 도전하세요.");
-                        Thread.Sleep(1000);
-                        Console.WriteLine("50골드를 잃었습니다");
-                        Thread.Sleep(3000);
-
-                    }
+                    Console.WriteLine($"{temp}이/가 나왔습니다.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("꽝! 다음 기회에 다시 도전하세요.");
+                    Thread.Sleep(1000);
+                    Console.WriteLine("50골드를 잃었습니다");
+                    Thread.Sleep(3000);
                 }
             }
-            Exit();
         }
 
         public override void Update()
@@ -105,6 +97,8 @@ namespace MineSlave.Scenes
                     Player.gold -= 100;
                     Console.WriteLine("-100 G");
                     Thread.Sleep(1000);
+
+                    curState = State.Gambling;
                 }
                 else
                 {
@@ -113,18 +107,37 @@ namespace MineSlave.Scenes
                     Console.WriteLine("마을로 돌아갑니다...");
                     Thread.Sleep(1000);
 
-                    game.ChangeScene(SceneType.Town);
-                    return;
+                    Exit();
                 }
-                curState = State.Gambling;
+
+            }
+            else if (curState == State.Result)
+            {
+                Random random = new Random();
+                temp = random.Next(1, 7);
+
+                if (temp == 1 || temp == 6)
+                {
+                    curState = State.GetGold;
+                }
+                else if (temp == 2 || temp == 3 || temp == 4 || temp == 5)
+                {
+                    curState = State.LoseGold;
+                }
             }
             else if (curState == State.GetGold)
             {
                 Player.gold += 200;
+                curState = State.Back;
             }
-            else if (curState == State.LoseGold)   //GetGold 랑 하나로 묶기
+            else if (curState == State.LoseGold)   
             {
                 Player.gold -= 50;
+                curState = State.Back;
+            }
+            else if (curState == State.Back)
+            {
+                Exit();
             }
 
         }

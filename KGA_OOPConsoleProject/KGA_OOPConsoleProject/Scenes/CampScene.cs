@@ -19,6 +19,14 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("캠프에 들어왔습니다");
             Thread.Sleep(1000);
+
+            Console.WriteLine("몇 호에 들어가시겠습니까");
+            Console.WriteLine("1. 101호");
+            Console.WriteLine("2. 102호");
+            Console.WriteLine("3. 103호");
+            Console.WriteLine();
+            Console.WriteLine("9.돌아간다");
+            Console.Write("선택 : ");
         }
 
         public override void Exit()
@@ -37,14 +45,6 @@ namespace MineSlave.Scenes
 
         public override void Render() 
         {
-            Console.WriteLine("몇 호에 들어가시겠습니까");
-            Console.WriteLine("1. 101호");
-            Console.WriteLine("2. 102호");
-            Console.WriteLine("3. 103호");
-            Console.WriteLine();
-            Console.WriteLine("9.돌아간다");
-            Console.Write("선택 : ");
-
             switch (input)
             {
                 case "1":

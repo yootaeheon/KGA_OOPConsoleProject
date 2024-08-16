@@ -6,13 +6,13 @@ using System.Runtime.CompilerServices;
 
 namespace MineSlave.Scenes
 {
-
     public class ShopScene : Scene
     {
         public enum State { Enter, ShopStory, Buy, Sell, Back = 9 }
 
         private State curState;
         private string input;
+
 
         private Item item;
         public items items;
@@ -54,17 +54,14 @@ namespace MineSlave.Scenes
                 Console.WriteLine("상점에 들어왔습니다.");
                 Thread.Sleep(1000);
                 Console.WriteLine("1. 구매");
-                Thread.Sleep(1000);
                 Console.WriteLine("2. 판매");
-                Thread.Sleep(1000);
                 Console.WriteLine("9. 나가기");
-                Thread.Sleep(1000);
                 Input();
             }
             else if (curState == State.Buy)
             {
-                
                 Console.WriteLine("아이템 번호를 눌러 구매하세요");
+
                 for (int i = 0; i < 12; i++)
                 {
                    Console.WriteLine($"{item}"); // 수정 필요
