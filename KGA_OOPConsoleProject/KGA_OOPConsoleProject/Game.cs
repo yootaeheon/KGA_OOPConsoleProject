@@ -58,6 +58,11 @@ namespace MineSlave
                 player.Str += 5;
             }
 
+            if (player.curHP <= 0)
+            {
+                 game.Over();
+            }
+
             if (player.CurHP >= player.MaxHP)
             {
                 player.CurHP = player.MaxHP;
@@ -93,7 +98,6 @@ namespace MineSlave
 
             player = new();
            
-
             scenes = new Scene[(int)SceneType.Size];
             scenes[(int)SceneType.Title] = new TitleScene(this);
             scenes[(int)SceneType.Select] = new SelectScene(this);

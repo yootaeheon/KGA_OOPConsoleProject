@@ -15,7 +15,7 @@ namespace MineSlave.Players
         public static int exhaustion = maxExhaustion; // 탈수게이지
         public int Exhaustion { get { return exhaustion; } set { } }
 
-        public static string name;
+        public static string name = SelectScene.nameInput;
         public string Name { get { return name; } }
 
         public static int maxHP = 100;
@@ -33,7 +33,7 @@ namespace MineSlave.Players
         public static int defense = 5;
         public int Defense { get { return defense; } set { } }
 
-        public static int gold = 30;
+        public static int gold = 100;
         public int Gold { get { return gold; } set { } }
 
         public static int exp = 0;
