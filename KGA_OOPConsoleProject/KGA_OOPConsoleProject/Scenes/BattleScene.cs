@@ -1,5 +1,6 @@
 ﻿using MineSlave.Monsters;
 using MineSlave.Players;
+using System.Numerics;
 
 namespace MineSlave.Scenes
 {
@@ -10,6 +11,7 @@ namespace MineSlave.Scenes
         public enum State { Enter, Encounter, Attack, Defense, Kill }
         private State curState;
         public ConsoleKey inputKey;
+        public Player player;
         public BattleScene(Game game) : base(game)
         {
         }
@@ -43,8 +45,6 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Thread.Sleep(1000);
-
-            game.ChangeScene(SceneType.Town);
         }
 
         public override void Input()
@@ -96,10 +96,20 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Kill)
             {
-                Player.exp += monster.exp;
                 Player.gold += monster.gold;
+                Player.exp += monster.exp;
+                if (player.Exp >= player.MaxExp)
+                {
+                    player.Level += 1;
+                    player.Exp = player.Exp - player.MaxExp;
 
-                Exit();
+                    player.MaxHP += 100;
+                    player.CurHP = player.MaxHP;
+                    
+                    player.Str += 5;
+                }
+
+                game.ChangeScene(SceneType.Town);
             }
         }
     }

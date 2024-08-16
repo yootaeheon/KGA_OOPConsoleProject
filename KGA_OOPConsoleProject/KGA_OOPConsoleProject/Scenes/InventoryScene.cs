@@ -23,8 +23,8 @@ namespace MineSlave.Scenes
 
         public override void Exit()
         {
-            Console.Clear();
-            game.ChangeScene(SceneType.Town);
+
+            
         }
 
         public override void Input()
@@ -44,16 +44,16 @@ namespace MineSlave.Scenes
         {
             if (curState == State.UseItem)
             {
-  //              if (inputKey == Array.IndexOf(Inventory.inven, Item))  //수정 필요
+   //             if (inputKey == Array.IndexOf(Inventory.inven, ))  //수정 필요
                 {
-  //                  Player.Equip(); //수정 필요
+                //    Player.Equip(); //수정 필요
                 }
             }
             else if (curState == State.CloseInventory)
             {
                 if (inputKey == ConsoleKey.Tab)
                 {
-                    Exit();
+                    game.ChangeScene(SceneType.Town);
                 }
             }
         }

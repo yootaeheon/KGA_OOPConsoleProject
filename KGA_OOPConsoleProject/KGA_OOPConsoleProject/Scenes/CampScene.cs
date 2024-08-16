@@ -1,4 +1,5 @@
 ﻿using MineSlave.Players;
+using System.Numerics;
 
 namespace MineSlave.Scenes
 {
@@ -6,7 +7,7 @@ namespace MineSlave.Scenes
     {
         public enum State { CampStory, Result1, Result2, Result3, Back = 9 }
         private State curState;
-
+        public Player player;   
         private string input;
 
 
@@ -34,8 +35,6 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Thread.Sleep(1000);
-
-            game.ChangeScene(SceneType.Town);
         }
 
         public override void Input()
@@ -100,6 +99,10 @@ namespace MineSlave.Scenes
             if (curState == State.Result1)
             {
                 Player.curHP += 80;
+                if (player.CurHP >= player.MaxHP)
+                {
+                    player.CurHP = player.MaxHP;
+                }
                 game.ChangeScene(SceneType.Town);
             }
             else if (curState == State.Result2)
@@ -110,6 +113,10 @@ namespace MineSlave.Scenes
             else if (curState == State.Result3)
             {
                 Player.curHP += 70;
+                if (player.CurHP >= player.MaxHP)
+                {
+                    player.CurHP = player.MaxHP;
+                }
                 game.ChangeScene(SceneType.Town);
             }
 

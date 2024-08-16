@@ -35,10 +35,11 @@ namespace MineSlave.Inventorys
             {
                 foreach (Item item in inven)
                 {
-//                    Console.WriteLine($"{Array.IndexOf(Inventory.inven, item)}. {item.name} \n{item.type} \n{item.weight} \n{item.price}");
+                  Console.WriteLine($"{item.name} \n{item.type} \n{item.weight} \n{item.price}");
+                    Console.WriteLine();
                 }
             }
-            Console.WriteLine("======= 가방 ========== ");
+            Console.WriteLine("================= ");
         }
     }
 }

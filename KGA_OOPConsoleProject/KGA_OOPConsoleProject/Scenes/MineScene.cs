@@ -1,5 +1,6 @@
 ﻿using MineSlave.Inventorys;
 using MineSlave.Items;
+using MineSlave.Players;
 using System.ComponentModel.Design;
 
 namespace MineSlave.Scenes
@@ -10,13 +11,23 @@ namespace MineSlave.Scenes
         private State curState;
         public ConsoleKey inputKey;
         public string input;
-
+        public Player player;
         public Item item;
         public Inventory inventory;
-
+        public ItemFactory ItemFactory;
+        public Diamond diamond;
+        public Coal coal;
+        public Gold gold;
+        public Inventory inven;
 
         public MineScene(Game game) : base(game)
         {
+            
+        }
+        
+        public class Init()
+        {
+            
         }
 
         public override void Enter()
@@ -30,8 +41,6 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Console.CursorVisible = true;
-            game.ChangeScene(SceneType.Town);
-
         }
 
         public override void Input()
@@ -49,29 +58,18 @@ namespace MineSlave.Scenes
                 Console.WriteLine("석탄을 채굴하여 돈을 벌 수 있습니다.");
                 Thread.Sleep(1000);
                 Console.WriteLine("스페이스바를 눌러 채굴을 시작하세요.");
-                Thread.Sleep(1000);
             }
             else if (curState == State.Mine)
             {
                 Console.Clear();
-                Players.Player.ShowInfo2();
-                Console.WriteLine();
+                Player.ShowInfo2();
                 Console.WriteLine("깡!...");
-                Thread.Sleep(2000);
-                Console.WriteLine("깡!!...");
-                Thread.Sleep(2000);
-                Console.WriteLine("깡!!!...");
-                Thread.Sleep(2000);
-                Console.WriteLine("(스페이스바를 이용하여 채굴)");
                 Thread.Sleep(1000);
-            }
-            else if (curState == State.GetItem)
-            {
-
-            }
-            else if (curState == State.Back)
-            {
-               
+                Console.WriteLine("깡!!...");
+                Thread.Sleep(1000);
+                Console.WriteLine("깡!!!...");
+                Thread.Sleep(1000);
+                Console.WriteLine("(스페이스바를 이용하여 채굴)");
             }
         }
 
@@ -97,8 +95,6 @@ namespace MineSlave.Scenes
 
                     do
                     {
-                        
-                        
                         if (percent > 95)
                         {
                             game.ChangeScene(SceneType.Battle);
@@ -108,18 +104,33 @@ namespace MineSlave.Scenes
                             Console.WriteLine("다이아몬드 채굴!");
                             Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
                             inventory.AddItem(diamond);
+                            player.CurHP -= 1;
+                            if (player.CurHP <= 0)
+                            {
+                                game.Over();
+                            }
                         }
                         else if (percent > 50)
                         {
                             Console.WriteLine("금 채굴!");
                             Gold gold = ItemFactory.Create<Gold>("금");
                             inventory.AddItem(gold);
+                            player.CurHP -= 1;
+                            if (player.CurHP <= 0)
+                            {
+                                game.Over();
+                            }
                         }
                         else
                         {
                             Console.WriteLine("석탄 채굴!");
                             Coal coal = ItemFactory.Create<Coal>("석탄");
                             inventory.AddItem(coal);
+                            player.CurHP -= 1;
+                            if (player.CurHP <= 0)
+                            {
+                                game.Over();
+                            }
                         }
                     } while (percent > 95 || inputKey == ConsoleKey.D9); 
                 }
@@ -130,7 +141,7 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Back)
             {
-                Exit();
+                game.ChangeScene(SceneType.Town);
             }
         }
     }

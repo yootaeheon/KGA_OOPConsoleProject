@@ -21,7 +21,19 @@ namespace MineSlave.Scenes
         
         public ShopScene(Game game) : base(game)
         {
+            Init();
+
+           // inventory.ShowAllItem();
         }
+
+        public void Init()
+        {
+            Inventory itemSlot = new Inventory();
+
+          //  itemSlot.AddItem();
+        }
+
+
 
         public override void Enter()
         {
@@ -37,8 +49,6 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("마을로 돌아갑니다...");
             Thread.Sleep(1000);
-            game.ChangeScene(SceneType.Town);
-
         }
 
         public override void Input()
@@ -62,22 +72,15 @@ namespace MineSlave.Scenes
             {
                 Console.WriteLine("아이템 번호를 눌러 구매하세요");
 
-                for (int i = 0; i < 12; i++)
-                {
-                   Console.WriteLine($"{item}"); // 수정 필요
-                }
+                inventory.ShowAllItem();
             }
             else if (curState == State.Sell)
             {
                 Console.WriteLine("아이템 번호를 눌러 판매하세요");
                 for (int i = 0; i < inventory.inven.Count; i++)
                 {
-                    Console.WriteLine($"{item}"); // 수정 필요
+                    //Console.WriteLine($"{itemSlot}"); // 수정 필요
                 }
-            }
-            else if (curState == State.Back)
-            {
-
             }
         }
 
@@ -85,17 +88,17 @@ namespace MineSlave.Scenes
         {
             if (curState == State.Enter)
             {
-                switch (input)
+                if (input == "1")
                 {
-                    case "1":
-                        curState = State.Buy;
-                        break;
-                    case "2":
-                        curState = State.Sell;
-                        break;
-                    case "9":
-                        game.ChangeScene(SceneType.Town);
-                        break;
+                    curState = State.Buy;
+                }
+                else if (input == "2")
+                {
+                    curState = State.Sell;
+                }
+                else if (input == "9")
+                {
+                    curState = State.Back;
                 }
             }
             else if (curState == State.Buy)
@@ -119,7 +122,7 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Back)
             {
-                Exit();
+                game.ChangeScene(SceneType.Town);
             }
         }
     }

@@ -9,7 +9,7 @@ namespace MineSlave.Scenes
         private State curState;
         int temp;
         private string input;
-
+        public Player player;
 
         public GamblingScene(Game game) : base(game)
         {
@@ -26,8 +26,11 @@ namespace MineSlave.Scenes
             Console.Clear();
             Console.WriteLine("도박 중독에 유의합시다.");
             Console.WriteLine("마을로 돌아갑니다...");
-            game.ChangeScene(SceneType.Town);
+
+            
         }
+
+        
 
         public override void Input()
         {
@@ -63,7 +66,7 @@ namespace MineSlave.Scenes
                 Console.WriteLine(".");
                 Thread.Sleep(1000);
                 Console.WriteLine(".");
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
 
                 curState = State.Result;
             }
@@ -73,6 +76,7 @@ namespace MineSlave.Scenes
                     Thread.Sleep(1000);
                     Console.WriteLine("축하합니다. 200골드를 획득하였습니다");
                     Thread.Sleep(1000);
+                game.ChangeScene(SceneType.Town);
             }
             else if (curState == State.LoseGold)
             {
@@ -83,7 +87,8 @@ namespace MineSlave.Scenes
                     Console.WriteLine("꽝! 다음 기회에 다시 도전하세요.");
                     Thread.Sleep(1000);
                     Console.WriteLine("50골드를 잃었습니다");
-                    Thread.Sleep(3000);
+                    Thread.Sleep(1000);
+                    game.ChangeScene(SceneType.Town);
                 }
             }
         }
@@ -107,7 +112,7 @@ namespace MineSlave.Scenes
                     Console.WriteLine("마을로 돌아갑니다...");
                     Thread.Sleep(1000);
 
-                    Exit();
+                    curState = State.Back;
                 }
 
             }
@@ -137,7 +142,7 @@ namespace MineSlave.Scenes
             }
             else if (curState == State.Back)
             {
-                Exit();
+                game.ChangeScene(SceneType.Town);
             }
 
         }

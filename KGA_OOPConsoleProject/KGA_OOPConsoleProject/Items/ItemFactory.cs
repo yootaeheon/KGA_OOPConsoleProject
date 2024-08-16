@@ -9,9 +9,9 @@ namespace MineSlave.Items
 {
    public class items
     {
-        Potion Potion1 = ItemFactory.Create<Potion>("HP 포션");
-        Potion Potion2 = ItemFactory.Create<Potion>("비타400");
-        Potion Potion3 = ItemFactory.Create<Potion>("MaxHP 포션");
+        Potion potion1 = ItemFactory.Create<Potion>("HP 포션");
+        Potion potion2 = ItemFactory.Create<Potion>("비타400");
+        Potion potion3 = ItemFactory.Create<Potion>("MaxHP 포션");
 
         Armor armor1 = ItemFactory.Create<Armor>("반코팅 목장갑");
         Armor armor2 = ItemFactory.Create<Armor>("3M 장갑");
@@ -29,11 +29,6 @@ namespace MineSlave.Items
         Coal coal = ItemFactory.Create<Coal>("석탄");
         Gold gold = ItemFactory.Create<Gold>("금");
         Diamond diamond = ItemFactory.Create<Diamond>("다이아몬드");
-
-        // 아이템 배열에 어떻게 넣을지
-       // Item[] gameItems = new Item[10];
-       // gameItems[0] = ; // 아이템 팩토리에서 생성한 아이템을 게임아이템 배열에 넣기
-
     }
 
     public class ItemFactory

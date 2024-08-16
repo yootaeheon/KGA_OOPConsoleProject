@@ -1,5 +1,4 @@
 ﻿using MineSlave.Items;
-using MineSlave.Monsters;
 using MineSlave.Scenes;
 
 namespace MineSlave.Players
@@ -11,7 +10,7 @@ namespace MineSlave.Players
 
         public static int maxExhaustion = 6;
         public int MaxExhaustion { get { return maxExhaustion; } set { } }
-        
+
         public static int exhaustion = maxExhaustion; // 탈수게이지
         public int Exhaustion { get { return exhaustion; } set { } }
 
@@ -23,6 +22,7 @@ namespace MineSlave.Players
 
         public static int curHP = maxHP;
         public int CurHP { get { return curHP; } set { } }
+
 
         public static int str = 5;
         public int Str { get { return str; } set { } }
@@ -45,8 +45,14 @@ namespace MineSlave.Players
         public static int duty = 500; // 세금
         public int Duty { get { return duty; } set { } }
 
+
         public static int deadLine = 5; // 납부 기한
         public int DeadLine { get { return deadLine; } set { } }
+
+
+
+
+
 
         // 아이템 장착
         public Armor curArmor;
