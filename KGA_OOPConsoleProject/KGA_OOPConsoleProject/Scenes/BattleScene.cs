@@ -1,6 +1,5 @@
 ﻿using MineSlave.Monsters;
 using MineSlave.Players;
-using System.Numerics;
 
 namespace MineSlave.Scenes
 {
@@ -16,7 +15,7 @@ namespace MineSlave.Scenes
         public BattleScene(Game game) : base(game)
         {
             player = game.player;
-           
+
             game.monster.apperance = "흉터로 뒤덮힌";
             game.monster.name = "실세 광부";
             game.monster.hp = 400;
@@ -61,7 +60,7 @@ namespace MineSlave.Scenes
 
         public override void Input()
         {
-             inputKey = Console.ReadKey(true).Key;
+            inputKey = Console.ReadKey(true).Key;
         }
 
         public override void Render()
@@ -80,8 +79,8 @@ namespace MineSlave.Scenes
             {
                 Console.WriteLine($"{monster.apperance} {monster.name}를 잡았다!!");
                 Console.WriteLine("엄청난 보상을 얻었다.");
-                Console.WriteLine($"{monster.exp}");
-                Console.WriteLine($"{monster.gold}");
+                Console.WriteLine($"경험치 획득 : {monster.exp}");
+                Console.WriteLine($"골드 획득 : {monster.gold}");
             }
         }
 
@@ -94,18 +93,16 @@ namespace MineSlave.Scenes
             else if (curState == State.Attack)
             {
                 int totalDamage = monster.hp - (game.player.Str - monster.defense);
-                do
+                if (inputKey == ConsoleKey.Spacebar)
                 {
-                    if (inputKey == ConsoleKey.Spacebar)
+                    for (int i = 0; 0 >= monster.hp; i++)
                     {
                         monster.hp -= totalDamage;
                         Console.WriteLine($"몬스터 남은 체력 : {monster.hp - totalDamage}");
-
                     }
-                }while (monster.hp <= 0);
-                curState = State.Kill;
-                return;
-               
+                    curState = State.Kill;
+                }
+
             }
             else if (curState == State.Kill)
             {
